@@ -9,7 +9,7 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging-key
     solvers:
-      - http01:
+    - http01:
         ingress:
           class: nginx
 
@@ -24,6 +24,6 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-prod-key
     solvers:
-      - http01:
+    - http01:
         ingress:
           class: nginx
