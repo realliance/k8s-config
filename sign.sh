@@ -5,6 +5,6 @@ export SEALED_SECRETS_CONTROLLER_NAME=sealed-secrets
 
 for f in ./**/*.secret; do
   if [ ! -f "${f%.secret}" ]; then
-    kubeseal < "$f" > "${f%.secret}"
+    kubeseal -o yaml < "$f" > "${f%.secret}"
   fi
 done

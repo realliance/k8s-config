@@ -13,6 +13,6 @@ read -p "Continue? (y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   for f in ./**/*.secret; do
-    kubeseal < "$f" > "${f%.secret}"
+    kubeseal -o yaml < "$f" > "${f%.secret}"
   done
 fi
