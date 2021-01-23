@@ -29,4 +29,5 @@ spec:
     global:
       podSecurityPolicy:
         enabled: true
+        useAppArmor: false
     installCRDs: true
