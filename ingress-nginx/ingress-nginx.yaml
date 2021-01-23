@@ -41,6 +41,7 @@ spec:
         ssl-protocols: TLSv1.3
         use-geoip: "false"
         use-geoip2: "false"
+        enable-ocsp: "true"
       addHeaders:
         Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; navigate-to https:; block-all-mixed-content
         Expect-CT: max-age=63072000, enforce
