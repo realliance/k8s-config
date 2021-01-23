@@ -21,7 +21,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: jetstack
-      version: 1.x.x
+      version: v1.x.x
   interval: 1m0s
   releaseName: cert-manager
   targetNamespace: cert-manager
@@ -29,4 +29,5 @@ spec:
     global:
       podSecurityPolicy:
         enabled: true
+        useAppArmor: false
     installCRDs: true
