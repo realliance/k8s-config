@@ -1,0 +1,23 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: slack-cd-all
+  namespace: flux-system
+spec:
+  type: slack
+  channel: cd-all
+  secretRef:
+    name: slack-cd-all
+
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: slack-cd-senior
+  namespace: flux-system
+spec:
+  type: slack
+  channel: cd-senior
+  secretRef:
+    name: slack-cd-senior
