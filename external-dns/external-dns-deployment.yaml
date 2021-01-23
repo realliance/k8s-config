@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: external-dns
+      containers:
+      - args:
+        - --source=service
+        - --source=ingress
+        - --registry=txt
+        - --provider-cloudflare
+        - --policy=sync
+        name: external-dns
+        env:
+        - name: CF_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare-api-token
+              key: api-token
+        - name: CF_API_EMAIL
+          value: "ccatlett2000@gmail.com"
