@@ -12,7 +12,7 @@ spec:
         - --source=service
         - --source=ingress
         - --registry=txt
-        - --provider-cloudflare
+        - --provider=cloudflare
         - --policy=sync
         name: external-dns
         env:
