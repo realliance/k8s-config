@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: slack-cd-all
+  namespace: flux-system
+spec:
+  encryptedData:
+    address: AgC0dh09jswiHT+6nLr1fA0m1dfydHv8U8/9+pctEHkcVwkete7wzwpfcgQPdV5k9Gzn2wcwceXWlQTK7HMoHAWVO2IWGmHW6XJOtOkTCyNrNZ6Tvr4zjDAVEUjxIQOJHrE3AkNpvYFvozaNbeER+mMt5QuY6eH1QXxrZJ4qKp4T0czuDjCfglvBbNUXnIBlZEzs9jM87ODtMU0oajxAs6B4xOnSf2H34Ilg1bnHTuuotjuRfvjoXbWccbL3NWsdlW8sZ7N2Kr/2xI7/MpwwDsHLo53j7BS1VWsE735687yQRI7x8LRfZaZzruVqVvhN2uiaIq6wdSgro14K2absUi0AAUYY5BLP5EzmilV1QG3M24dJ+WVGKcs4tOxwEiG8kIKF6nvFp/xhFWXP9ZeZwbr3mHj9KKIoN3+IXfUa57yRqygC8RqFDGmq73ee0P0h55DMCHFYlmUmsVn1Sik7lztCk1VaUCR50CX+g5zHgVImKdLSBU8WaV8NrmLqhs4QOtNqdmlIvP/nkGy5kzMyNEC0hXMUAIgHSm9PPWqkrkkx8hwpnNYPwBSwR8BRwFedsMrUFGjTTP9sJC10L9/OuUCZFgojRCDcYgEC84sM/NcRlBQTuihRpOMNcPiZTT9aaFdrsug6no9nUiuVyq4kMUPLs1OWr+fA2m+q9HmocIZDt7VXUi5UteOhV5fszeQ2LKzH8BoMpvXv/0f9Ng86bQELMHfKuT/EtyBUCbepXG6KVIVxfk8nvZh/GDQwOY88nU3TgsLbJC14gNDCENNYSan2ZLMfFMZclEzwuHxgpIWv
+  template:
+    metadata:
+      creationTimestamp: null
+      name: slack-cd-all
+      namespace: flux-system
+
