@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   providerRef:
-    name: slack
+    name: slack-cd-all
   eventSeverity: info
   eventSources:
     - kind: GitRepository
