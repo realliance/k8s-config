@@ -5,7 +5,7 @@ metadata:
 spec:
   template:
     spec:
-      $setElementOrder/containers:
+      containers:
       - name: external-dns
       containers:
       - args:
