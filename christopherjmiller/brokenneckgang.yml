@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: bng-site
-  namespace: christopherjmiller
+  namespace: flux-system
 spec:
   interval: 1h0m0s
   ref:
@@ -15,7 +15,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
   name: bng-site
-  namespace: christopherjmiller
+  namespace: flux-system
 spec:
   interval: 1m0s
   path: ./deploy
