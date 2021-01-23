@@ -28,4 +28,23 @@ spec:
   values:
     podSecurityPolicy:
       enabled: true
-
+    controller:
+      config:
+        enable-brotli: "true"
+        hsts: "true"
+        hsts-max-age: "63072000"
+        hsts-preload: "true"
+        server-snippet: |
+          ssl_prefer_server_ciphers off;
+        server-tokens: "false"
+        ssl-early-data: "false"
+        ssl-protocols: TLSv1.3
+        use-geoip: "false"
+        use-geoip2: "false"
+      addHeaders:
+        Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; navigate-to https:; block-all-mixed-content
+        Expect-CT: max-age=63072000, enforce
+        Feature-Policy: accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; fullscreen 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; usb 'none'; wake-lock 'none'; encrypted-media 'none'; geolocation 'none'; speaker 'none'
+        Referrer-Policy: no-referrer
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: deny
