@@ -1,0 +1,214 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dex
+  namespace: dex
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dex
+  namespace: dex
+data:
+  config.yaml: |-
+    issuer: https://sso.realliance.net
+    storage:
+      type: kubernetes
+      config:
+        inCluster: true
+    web:
+      http: 0.0.0.0:5556
+    oauth2:
+      responseTypes: ["code", "token", "id_token"]
+      skipApprovalScreen: true
+    connectors:
+    - type: github
+      id: github
+      name: GitHub
+      config:
+        clientID: $GITHUB_CLIENT_ID
+        clientSecret: $GITHUB_CLIENT_SECRET
+        redirectURI: https://sso.realliance.net/callback
+        orgs:
+        - name: realliance
+        teamNameField: slug
+    staticClients:
+    - id: kubernetes
+      name: kubernetes
+      secret: "T73SwD/eY4bLOfEGKxtzm59igVp5RuX5u7AoSmuc2RY="
+      redirectURIs:
+      - 'http://localhost:8000'
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: dex
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - "*"
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dex
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: dex
+subjects:
+- kind: ServiceAccount
+  name: dex
+  namespace: dex
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: dex
+  namespace: dex
+rules:
+- apiGroups:
+  - dex.coreos.com
+  resources:
+  - authcodes
+  - authrequests
+  - connectors
+  - oauth2clients
+  - offlinesessionses
+  - passwords
+  - refreshtokens
+  - signingkeies
+  verbs:
+  - "*"
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: dex
+  namespace: dex
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: dex
+subjects:
+- kind: ServiceAccount
+  name: dex
+  namespace: dex
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dex
+  namespace: dex
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5556
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: dex
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dex
+  namespace: dex
+  labels:
+    app: dex
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ''
+spec:
+  replicas: 1
+  minReadySeconds: 30
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: dex
+  template:
+    metadata:
+      labels:
+        app: dex
+      annotations:
+        checksum/config: 9b0b442bbda13e592dd0135b7104c976bc96351cd91557bb21c91b606a57e0b5
+    spec:
+      volumes:
+      - name: config
+        configMap:
+          name: dex
+          items:
+          - key: config.yaml
+            path: config.yaml
+      serviceAccountName: dex
+      containers:
+      - name: dex
+        image: "dexidp/dex:v2.27.0"
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/local/bin/dex", "serve", "/etc/dex/config.yaml"]
+        env:
+        - name: GITHUB_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dex-env
+              key: github-client-id
+        - name: GITHUB_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dex-env
+              key: github-client-secret
+        ports:
+        - name: http
+          containerPort: 5556
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 5556
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 5556
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+        volumeMounts:
+        - name: config
+          mountPath: /etc/dex
+        resources:
+          {}
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dex
+  namespace: dex
+spec:
+  tls:
+  - hosts:
+      - sso.realliance.net
+    secretName: sso-tls
+  rules:
+  - host: sso.realliance.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dex
+            port:
+              number: 5556
