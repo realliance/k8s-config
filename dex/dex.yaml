@@ -6,48 +6,6 @@ metadata:
   namespace: dex
 
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: dex
-  namespace: dex
-data:
-  config.yaml: |-
-    issuer: https://sso.realliance.net
-    storage:
-      type: kubernetes
-      config:
-        inCluster: true
-    web:
-      http: 0.0.0.0:5556
-    oauth2:
-      responseTypes: ["code", "token", "id_token"]
-      skipApprovalScreen: true
-    connectors:
-    - type: github
-      id: github
-      name: GitHub
-      config:
-        clientID: $GITHUB_CLIENT_ID
-        clientSecret: $GITHUB_CLIENT_SECRET
-        redirectURI: https://sso.realliance.net/callback
-        orgs:
-        - name: realliance
-        teamNameField: slug
-    staticClients:
-    - id: kubernetes
-      name: kubernetes
-      secret: "T73SwD/eY4bLOfEGKxtzm59igVp5RuX5u7AoSmuc2RY="
-      redirectURIs:
-      - 'http://localhost:8000'
-    - id: concourse
-      name: concourse
-      secret: $CONCOURSE_SECRET
-      redirectURIs:
-      - 'http://localhost:8000'
-      - 'https://ci.realliance.net/sky/issuer/callback'
-
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -156,33 +114,14 @@ spec:
     spec:
       volumes:
       - name: config
-        configMap:
-          name: dex
-          items:
-          - key: config.yaml
-            path: config.yaml
+        secret:
+          secretName: dex-config
       serviceAccountName: dex
       containers:
       - name: dex
         image: "dexidp/dex:v2.27.0"
         imagePullPolicy: IfNotPresent
         command: ["/usr/local/bin/dex", "serve", "/etc/dex/config.yaml"]
-        env:
-        - name: GITHUB_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: dex-env
-              key: github-client-id
-        - name: GITHUB_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: dex-env
-              key: github-client-secret
-        - name: CONCOURSE_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: dex-env
-              key: concourse-secret
         ports:
         - name: http
           containerPort: 5556
