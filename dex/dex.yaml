@@ -86,6 +86,7 @@ rules:
   - passwords
   - refreshtokens
   - signingkeies
+  - devicerequests
   verbs:
   - "*"
 
