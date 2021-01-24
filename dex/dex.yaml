@@ -87,6 +87,7 @@ rules:
   - refreshtokens
   - signingkeies
   - devicerequests
+  - devicetokens
   verbs:
   - "*"
 
