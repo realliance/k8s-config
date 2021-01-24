@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: concourse
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: concourse-main
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: concourse-senior-design
