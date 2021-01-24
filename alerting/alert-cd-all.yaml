@@ -7,14 +7,10 @@ metadata:
 spec:
   providerRef:
     name: slack-cd-all
-  eventSeverity: error
+  eventSeverity: info
   eventSources:
     - kind: GitRepository
       name: '*'
-    - kind: Kustomization
-      name: '*'
     - kind: HelmRepository
-      name: '*'
-    - kind: HelmRelease
       name: '*'
 
