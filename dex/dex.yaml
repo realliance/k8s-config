@@ -40,6 +40,11 @@ data:
       secret: "T73SwD/eY4bLOfEGKxtzm59igVp5RuX5u7AoSmuc2RY="
       redirectURIs:
       - 'http://localhost:8000'
+    - id: concourse
+      name: concourse
+      secret: $CONCOURSE_SECRET
+      redirectURIs:
+      - 'https://ci.realliance.net/sky/issuer/callback'
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -172,6 +177,11 @@ spec:
             secretKeyRef:
               name: dex-env
               key: github-client-secret
+        - name: CONCOURSE_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dex-env
+              key: concourse-secret
         ports:
         - name: http
           containerPort: 5556
