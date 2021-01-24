@@ -44,6 +44,7 @@ data:
       name: concourse
       secret: $CONCOURSE_SECRET
       redirectURIs:
+      - 'http://localhost:8000'
       - 'https://ci.realliance.net/sky/issuer/callback'
 
 ---
