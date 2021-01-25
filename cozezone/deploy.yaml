@@ -93,6 +93,11 @@ spec:
               secretKeyRef:
                 name: files-minio
                 key: secretkey
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-redis
+                key: redis-password
       - name: mastodon-sidekiq
         image: tootsuite/mastodon:v3.3.0
         command: ["bundle", "exec", "sidekiq"]
@@ -146,6 +151,11 @@ spec:
               secretKeyRef:
                 name: files-minio
                 key: secretkey
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-redis
+                key: redis-password
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -228,6 +238,11 @@ spec:
               secretKeyRef:
                 name: files-minio
                 key: secretkey
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-redis
+                key: redis-password
 ---
 apiVersion: v1
 kind: Service
