@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: postgres-operator
 data:
-  spilo_runasuser: 1000
-  spilo_runasgroup: 1000
-  spilo_fsgroup: 1000
+  spilo_runasuser: '1000'
+  spilo_runasgroup: '1000'
+  spilo_fsgroup: '1000'
