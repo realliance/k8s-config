@@ -43,6 +43,7 @@ spec:
         auth:
           cookieSecure: true
           mainTeam:
+            localUser: ""
             oidc:
               group: "realliance:concourse-admins"
           oidc:
