@@ -1,0 +1,258 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-web
+  namespace: cozezone
+  labels:
+    app: cozezone
+    service: web
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: cozezone
+      service: web
+  template:
+    metadata:
+      labels:
+        app: cozezone
+        service: web
+    spec:
+      volumes:
+      - name: mastodon-system
+        emptyDir: {}
+      containers:
+      - name: mastodon-web
+        image: tootsuite/mastodon:v3.3.0
+        command: ["/bin/bash", "-c",
+            "bundle exec rake assets:precompile && \
+             bundle exec rake db:migrate --trace && \
+             bundle exec rails s -p 3000 -b 0.0.0.0"
+          ]
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /mastodon/public/system
+          name: mastodon-system
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        envFrom:
+        - configMapRef:
+            name: mastodon-config
+        env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgres.acid-cozezone-psql.credentials
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: postgres.acid-cozezone-psql.credentials
+                key: password
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: SECRET_KEY_BASE
+          - name: OTP_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: OTP_SECRET
+          - name: SMTP_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: SMTP_PASSWORD
+          - name: VAPID_PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: VAPID_PRIVATE_KEY
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: files-minio
+                key: accesskey
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: files-minio
+                key: secretkey
+      - name: mastodon-sidekiq
+        image: tootsuite/mastodon:v3.3.0
+        command: ["bundle", "exec", "sidekiq"]
+        ports:
+          - containerPort: 4000
+            protocol: TCP
+        volumeMounts:
+        - mountPath: /mastodon/public/system
+          name: mastodon-system
+        envFrom:
+        - configMapRef:
+            name: mastodon-config
+        env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgres.acid-cozezone-psql.credentials
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: postgres.acid-cozezone-psql.credentials
+                key: password
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: SECRET_KEY_BASE
+          - name: OTP_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: OTP_SECRET
+          - name: SMTP_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: SMTP_PASSWORD
+          - name: VAPID_PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: VAPID_PRIVATE_KEY
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: files-minio
+                key: accesskey
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: files-minio
+                key: secretkey
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-streaming
+  namespace: cozezone
+  labels:
+    app: cozezone
+    service: streaming
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: cozezone
+      service: streaming
+  template:
+    metadata:
+      labels:
+        app: cozezone
+        service: streaming
+    spec:
+      containers:
+        - name: mastodon-streaming
+          image: tootsuite/mastodon:v3.3.0
+          command: ["node", "./streaming"]
+          ports:
+            - containerPort: 4000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api/v1/streaming/health
+              port: 4000
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          envFrom:
+          - configMapRef:
+              name: mastodon-config
+          env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgres.acid-cozezone-psql.credentials
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: postgres.acid-cozezone-psql.credentials
+                key: password
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: SECRET_KEY_BASE
+          - name: OTP_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: OTP_SECRET
+          - name: SMTP_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: SMTP_PASSWORD
+          - name: VAPID_PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: cozezone-secrets
+                key: VAPID_PRIVATE_KEY
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: files-minio
+                key: accesskey
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: files-minio
+                key: secretkey
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cozezone-web
+  namespace: cozezone
+  labels:
+    service: web
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+      name: http
+  selector:
+    app: cozezone
+    service: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cozezone-streaming
+  namespace: cozezone
+  labels:
+    service: streaming
+spec:
+  ports:
+    - port: 4000
+      targetPort: 4000
+      protocol: TCP
+      name: http
+  selector:
+    app: cozezone
+    service: streaming
