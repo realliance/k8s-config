@@ -27,8 +27,8 @@ spec:
       - name: mastodon-system
         emptyDir: {}
       securityContext:
-        runAsUser: 101
-        runAsGroup: 101
+        runAsUser: 991
+        runAsGroup: 991
       containers:
       - name: mastodon-web
         image: tootsuite/mastodon:v3.3.0
@@ -169,8 +169,8 @@ spec:
         service: streaming
     spec:
       securityContext:
-        runAsUser: 101
-        runAsGroup: 101
+        runAsUser: 991
+        runAsGroup: 991
       containers:
         - name: mastodon-streaming
           image: tootsuite/mastodon:v3.3.0
