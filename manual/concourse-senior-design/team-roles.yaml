@@ -1,0 +1,8 @@
+---
+roles:
+  - name: owner
+    oidc:
+      groups: [realliance:concourse-admins]
+  - name: viewer
+    oidc:
+      groups: [realliance:senior-design]
