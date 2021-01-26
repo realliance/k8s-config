@@ -35,7 +35,9 @@ spec:
           enabled: false
         kubernetes:
           namespacePrefix: "concourse-"
-          createTeamNamespaces: false
+          teams:
+            - main
+            - senior-design
         prometheus:
           enabled: true
         tsa:
