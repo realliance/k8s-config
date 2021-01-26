@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -6,9 +7,9 @@ metadata:
   labels:
     service: web
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 4m
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: 'true'
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data: blob: https:; font-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; frame-src 'self'; connect-src 'self' data: blob: wss:; object-src 'none'; media-src 'self' https:";
       more_set_headers "Referrer-Policy: 'same-origin'";
@@ -29,7 +30,7 @@ spec:
                 name: cozezone-web
                 port:
                   number: 80
-          - path: '/api/v1/streaming'
+          - path: /api/v1/streaming
             pathType: Prefix
             backend:
               service:
@@ -45,7 +46,7 @@ metadata:
   labels:
     service: files
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 4m
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; frame-src 'self'; connect-src 'self' data: blob: wss:";
@@ -78,9 +79,9 @@ spec:
     name: letsencrypt-prod
   commonName: coze.zone
   dnsNames:
-  - coze.zone
-  - www.coze.zone
-  - files.coze.zone
+    - coze.zone
+    - www.coze.zone
+    - files.coze.zone
   privateKey:
     rotationPolicy: Always
     algorithm: ECDSA

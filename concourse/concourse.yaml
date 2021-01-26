@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 1m0s
   url: https://concourse-charts.storage.googleapis.com/
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -28,13 +27,13 @@ spec:
   values:
     concourse:
       web:
-        clusterName: "Realliance CI"
-        externalUrl: "https://ci.realliance.net"
+        clusterName: Realliance CI
+        externalUrl: https://ci.realliance.net
         logLevel: error
         localAuth:
           enabled: false
         kubernetes:
-          namespacePrefix: "concourse-"
+          namespacePrefix: concourse-
           teams:
             - main
             - senior-design
@@ -45,14 +44,14 @@ spec:
         auth:
           cookieSecure: true
           mainTeam:
-            localUser: ""
+            localUser: ''
             oidc:
-              group: "realliance:concourse-admins"
+              group: realliance:concourse-admins
           oidc:
             enabled: true
-            displayName: "Realliance SSO"
-            issuer: "https://sso.realliance.net"
-            scope: "email groups"
+            displayName: Realliance SSO
+            issuer: https://sso.realliance.net
+            scope: email groups
             groupsKey: groups
             userNameKey: email
       worker:

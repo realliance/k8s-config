@@ -9,7 +9,6 @@ spec:
   channel: cd-all
   secretRef:
     name: slack-cd-all
-
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Provider

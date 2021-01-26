@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,28 +7,28 @@ metadata:
 data:
   LOCAL_DOMAIN: coze.zone
   REDIS_HOST: cozezone-redis-master
-  REDIS_PORT: "6379"
+  REDIS_PORT: '6379'
   DB_HOST: acid-cozezone-psql
-  DB_PORT: "5432"
+  DB_PORT: '5432'
   DB_NAME: postgres
-  ES_ENABLED: "true"
+  ES_ENABLED: 'true'
   ES_HOST: cozezone-elasticsearch-es-default
-  ES_PORT: "9200"
-  S3_ENABLED: "true"
+  ES_PORT: '9200'
+  S3_ENABLED: 'true'
   S3_PROTOCOL: https
   S3_BUCKET: mastodon
   S3_HOSTNAME: files.coze.zone
   S3_ENDPOINT: https://files.coze.zone
   SMTP_SERVER: smtp.sendgrid.net
-  SMTP_PORT: "587"
+  SMTP_PORT: '587'
   SMTP_LOGIN: apikey
   SMTP_FROM_ADDRESS: noreply@em5621.coze.zone
   SMTP_DOMAIN: em5621.coze.zone
   SMTP_AUTH_METHOD: plain
   VAPID_PUBLIC_KEY: BMJVQR8uENVA-Rcbo3My6O9y9vBkI57KFaA2lJTY0Uuy3UVUzippq2WNLOWhuOBVgzQ86nSWYXJPl9S2qaTx71s=
-  RAILS_SERVE_STATIC_FILES: "true"
-  AUTHORIZED_FETCH: "true"
-  RAILS_ENV: "production"
-  NODE_ENV: "production"
-  DEFAULT_LOCALE: "en"
+  RAILS_SERVE_STATIC_FILES: 'true'
+  AUTHORIZED_FETCH: 'true'
+  RAILS_ENV: production
+  NODE_ENV: production
+  DEFAULT_LOCALE: en
   LIMITED_FEDERATION_MODE: 'false'
