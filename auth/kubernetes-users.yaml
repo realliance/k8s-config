@@ -8,7 +8,6 @@ roleRef:
   kind: ClusterRole
   name: view
 subjects:
-- apiGroup: rbac.authorization.k8s.io
-  kind: Group
-  name: realliance:kubernetes-users
-
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: realliance:kubernetes-users

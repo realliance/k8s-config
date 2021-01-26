@@ -9,7 +9,6 @@ spec:
   ref:
     branch: master
   url: https://github.com/ChristopherJMiller/bng-site.git
-
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
