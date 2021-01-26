@@ -56,7 +56,6 @@ spec:
             groupsKey: groups
             userNameKey: email
       worker:
-        replicas: 5
         logLevel: error
         baggageclaim:
           logLevel: error
@@ -72,6 +71,8 @@ spec:
           - secretName: ci-tls
             hosts:
               - ci.realliance.net
+    worker:
+      replicas: 5
     podSecurityPolicy:
       create: true
     secrets:
