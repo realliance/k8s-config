@@ -1,0 +1,32 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: renovate
+spec:
+  schedule: '@hourly'
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+          containers:
+            - name: renovate
+              image: renovate/renovate:24.14.0
+              envFrom:
+                - secretRef:
+                    name: renovate-env
+              volumeMounts:
+                - name: config
+                  mountPath: /opt/renovate/
+          restartPolicy: Never
+          volumes:
+            - name: config
+              configMap:
+                name: renovate-config
