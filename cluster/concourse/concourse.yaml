@@ -71,7 +71,7 @@ spec:
             hosts:
               - ci.realliance.net
     worker:
-      replicas: 5
+      replicas: 1
     podSecurityPolicy:
       create: true
     secrets:
