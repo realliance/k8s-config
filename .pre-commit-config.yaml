@@ -20,8 +20,6 @@ repos:
         name: Fix UTF-8 byte order marker
       - id: mixed-line-ending
         args: [--fix, lf]
-      - id: no-commit-to-branch
-        args: [--branch, main]
       - id: trailing-whitespace
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.25.0
