@@ -5,7 +5,7 @@
     ":pinVersions",
     "docker:pinDigests",
     ":rebaseStalePrs",
-    ":automergeMinor",
+    ":automergePatch",
     ":automergeDigest"
   ],
   "kubernetes": {
