@@ -1,0 +1,15 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: alert-cd-senior
+  namespace: flux-system
+spec:
+  providerRef:
+    name: slack-cd-senior
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: senior-accounts
+    - kind: Kustomization
+      name: senior-accounts
