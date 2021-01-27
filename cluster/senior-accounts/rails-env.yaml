@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp:
+  name: rails-env
+  namespace: senior-accounts
+spec:
+  encryptedData:
+    master-key: AgA9L5md5/+puHMHS5wTFmXmECM3BtMi+7/yYbAs8YeiBiZAQii8IQkYnZWhWiJwBXnKe0k8ScswW95785XmYUYyIY6hhDw8lIyH8v66Tq8gY0SEgU7W3TE4u08uC8Vn0kdd7kvEoJmGCyKx/g2kX+L3jDGi6fyE0xvkGYOJ7SgWoU+GHhuVfCE8mREVMVvBu/pHb03DwK8zoBy9UYq4+zxW+F0cBtVBupWpPqKHQOzgOFPenZx1VKwR4a3L2qCuvuwMZhHvi5gsjhEug8BsRdmXr3rDkfac6wcHh5p+OYMc208t+QhIBb3WJaNj/iKIzZHujj4zEg/m3vz71YNQvN0oKMcyudLJEPvoDp6/i82qAM5otiZeSX37Q6nmWJBbxi2o5xXhqqi5yE915TqAKDxvcL7c2BYBHVzRptSZ2By/Ch+gKoKKbwQCFSfxnETBt9PinfpxCQ0nEofbAaraxxm7czOIUSOYdtz+3AuuFehd/zGxC5odQLF+NLzpGRy/7sv+Z/CvZGU6+bkX8oZmi/u7xh8j/dn4RLie0ETTVwneqkhg/v3eTVwIwnDdP1CNuu1DBW8wZRM6ZslYln5yDMx3SdiQ56gRQSp90kCtDvKrapi6sCBdfVVv7h5PeO3mSO6OudDUlOdjWQIK6aLduf6OnC/M0WZxLTfrbOiCKUXDYmX/0vdaq2JUa8AJksPDL9lCmrCfstxV743s3r37m2Y2g1LeBusVdZR/UlMza9wT3A==
+  template:
+    metadata:
+      creationTimestamp:
+      name: rails-env
+      namespace: senior-accounts

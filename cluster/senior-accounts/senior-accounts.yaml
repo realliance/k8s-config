@@ -1,0 +1,24 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: senior-accounts
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: master
+  url: https://github.com/realliance/senior-accounts.git
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: senior-accounts
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  path: ./deploy
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: senior-accounts
