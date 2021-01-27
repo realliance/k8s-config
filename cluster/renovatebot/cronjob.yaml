@@ -18,7 +18,7 @@ spec:
             fsGroup: 1000
           containers:
             - name: renovate
-              image: renovate/renovate:24.28.4
+              image: renovate/renovate:24.28.4@sha256:c91fc29a7b1b1ef7367905f53d2449936bb58e20cdf41fe64d4d90c7ce3869a8
               envFrom:
                 - secretRef:
                     name: renovate-env
