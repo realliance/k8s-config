@@ -4,7 +4,7 @@ kind: CronJob
 metadata:
   name: renovate
 spec:
-  schedule: '*/1 * * * *'
+  schedule: '*/5 * * * *'
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
@@ -18,7 +18,7 @@ spec:
             fsGroup: 1000
           containers:
             - name: renovate
-              image: renovate/renovate:24.29.0@sha256:370f602d6db2d1f5b1172f84fbf1a756ca035c19cc79c9fb23580dae3a4f6d1f
+              image: docker.io/renovate/renovate:24.29.0@sha256:370f602d6db2d1f5b1172f84fbf1a756ca035c19cc79c9fb23580dae3a4f6d1f
               envFrom:
                 - secretRef:
                     name: renovate-env

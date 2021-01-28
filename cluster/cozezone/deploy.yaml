@@ -32,7 +32,7 @@ spec:
         runAsGroup: 991
       containers:
         - name: mastodon-web
-          image: tootsuite/mastodon:v3.3.0@sha256:49af23b64d336a63e8ba84e03fe7c0aa08de718e12938a607ead95e7db520037
+          image: docker.io/tootsuite/mastodon:v3.3.0@sha256:49af23b64d336a63e8ba84e03fe7c0aa08de718e12938a607ead95e7db520037
           command: [/bin/bash, -c, bundle exec rake assets:precompile && bundle exec rake db:migrate --trace && bundle exec rails s -p 3000 -b 0.0.0.0]
           ports:
             - containerPort: 3000
@@ -96,7 +96,7 @@ spec:
                   name: cozezone-redis
                   key: redis-password
         - name: mastodon-sidekiq
-          image: tootsuite/mastodon:v3.3.0@sha256:49af23b64d336a63e8ba84e03fe7c0aa08de718e12938a607ead95e7db520037
+          image: docker.io/tootsuite/mastodon:v3.3.0@sha256:49af23b64d336a63e8ba84e03fe7c0aa08de718e12938a607ead95e7db520037
           command: [bundle, exec, sidekiq]
           ports:
             - containerPort: 4000
@@ -180,7 +180,7 @@ spec:
         runAsGroup: 991
       containers:
         - name: mastodon-streaming
-          image: tootsuite/mastodon:v3.3.0@sha256:49af23b64d336a63e8ba84e03fe7c0aa08de718e12938a607ead95e7db520037
+          image: docker.io/tootsuite/mastodon:v3.3.0@sha256:49af23b64d336a63e8ba84e03fe7c0aa08de718e12938a607ead95e7db520037
           command: [node, ./streaming]
           ports:
             - containerPort: 4000
