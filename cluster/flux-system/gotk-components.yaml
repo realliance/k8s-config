@@ -2923,7 +2923,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/helm-controller:v0.6.1
+          image: ghcr.io/fluxcd/helm-controller:v0.6.1@sha256:b4fa0586ecdda482141177d1d2771233e1673291604827b59430389de8174566
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2997,7 +2997,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/image-automation-controller:v0.4.0
+          image: ghcr.io/fluxcd/image-automation-controller:v0.4.0@sha256:f984192c6d699556e575dfcb1b68aee617b103accc9e64d2201d943a0c32fbbe
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -3071,7 +3071,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/image-reflector-controller:v0.4.1
+          image: ghcr.io/fluxcd/image-reflector-controller:v0.4.1@sha256:bbc62b291f85d09f54f241caaccb4e5c3192fa2c48160204889e0f4f193a3423
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -3149,7 +3149,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/kustomize-controller:v0.7.2
+          image: ghcr.io/fluxcd/kustomize-controller:v0.7.2@sha256:d6c0d577139461bd84941d64dee607da11e6b1f7e4b77891d805362a1c5f5555
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -3224,7 +3224,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/notification-controller:v0.7.1
+          image: ghcr.io/fluxcd/notification-controller:v0.7.1@sha256:cfe67fe76fe740fe86f10e99120f321e18c425a0b3990570cceda56368b4ddd8
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -3304,7 +3304,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/source-controller:v0.7.1
+          image: ghcr.io/fluxcd/source-controller:v0.7.1@sha256:17f2acdf74e9e25faa90742107d72f9d48857c0f8951571083f03f8086acda2a
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
