@@ -8,8 +8,7 @@ data:
     {
       "onboardingConfig": { "extends": ["config:base", ":prHourlyLimitNone", ":prConcurrentLimitNone", ":pinVersions", "docker:pinDigests", ":rebaseStalePrs"] },
       "onboardingConfigFileName" : ".renovaterc.json",
-      "persistRepoData": true,
       "platform": "github",
       "autodiscover": true,
-      "gitAuthor": "Realliance CI <ci@realliance.net>"
+      "gitAuthor": "Realliance Renovate <renovate@realliance.net>"
     }
