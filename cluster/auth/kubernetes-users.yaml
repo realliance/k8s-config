@@ -11,3 +11,16 @@ subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: Group
     name: realliance:kubernetes-users
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: meacham
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: cmeacham98@gmail.com
