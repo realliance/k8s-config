@@ -71,6 +71,7 @@ spec:
             hosts:
               - ci.realliance.net
     worker:
+      kind: Deployment
       replicas: 1
     podSecurityPolicy:
       create: true
