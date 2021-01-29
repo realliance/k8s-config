@@ -12,12 +12,3 @@ spec:
       - http01:
           ingress:
             class: nginx
-      - dns01:
-          cloudflare:
-            email: ccatlett2000@gmail.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token
-              key: api-key
-        selector:
-          matchLabels:
-            use-dns-solver: 'true'
