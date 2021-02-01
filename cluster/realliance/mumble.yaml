@@ -20,7 +20,7 @@ spec:
         fsGroup: 999
       initContainers:
         - name: setup-tls
-          image: docker.io/busybox:latest@sha256:383c3f8b66f5a1715aecab96dd3e778c65ebec0da878a14b68df2f05e86fa3f5
+          image: docker.io/busybox:latest@sha256:0c84387d6b86cd74630b9a6fef8aeee7abf0553a16766329767083adf191286e
           volumeMounts:
             - name: tls
               mountPath: /data/cert
