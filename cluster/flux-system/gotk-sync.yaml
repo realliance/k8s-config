@@ -9,6 +9,8 @@ spec:
   ref:
     branch: main
   url: https://github.com/realliance/k8s-config.git
+  ignore: |
+    *.secret.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization

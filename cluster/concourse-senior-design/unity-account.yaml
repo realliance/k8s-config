@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: unity-account
   namespace: concourse-senior-design
 spec:
@@ -10,7 +11,6 @@ spec:
     username: AgB3glAgCxxeIA2NZkgjDrnJYoJpy06wQaj2vP0x84cU7yHVkWd0aGxJU+LNMHSB8NiDJDW+fbSzT0cB1P8BQJgQSpxsD/VW6Mr3zAZVgdObjQ/I5t0VmHXUKxNXK7+un66vfGz//XVpx3dX6fBcKGfGgABOImWS096lYgSLmatLQv9Jiqh+fZJnAlNszVYsn0ZQDanhFhInPFr6+YyZAzLkNnmhQNLMwU2TpVeaCn68wD8PCBxw+ryhIKYagjSRlbJSwzrmmowLf6r6meFIlLVXlD9pqaW6KeaK+fhw1peoAcg4NfrZO24MkCgmtC36FcNDlMyt848b66J1yqKuGRLVvdsnRVbR+7bP16S9HK6WNhL/7l1ADDmfw5z9iPlfJUCt/2EpN2Jx17+YTQHkVxOl97OeOEpnKC/VfzIA50VE63gKKzP7HtG5NNcWXy4M2OAM3xr8NygltBVnyaIUW7Z100E0Pk8CZYfT+gj8ucDNybMlsiI+LhrCBtSoS6hbHjFRZJCPyrlCh6WcKlS0Z5H14Xh4NfO2jhC+8lbMBr/T6twsN+YHjCzm8JcOoOwlmPcVur7rGmTOf9gDCp/tphpVwKwYFMARJ9koexqgrfJBC//700MF3a3dMGrB2vlfUM/jOZducivsaZCDjjOSDkQ0thMPgeZ9EmVZObRiaFkbRw+ouuOmuLssDKiHTkqKMxrb/yoQNK2g4Rb+zfWgTz0PgfFOpF/yrnsETiNT
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: unity-account
       namespace: concourse-senior-design
-
