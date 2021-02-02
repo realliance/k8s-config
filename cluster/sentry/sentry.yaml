@@ -1,0 +1,113 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: sentry
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: https://sentry-kubernetes.github.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sentry
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: sentry
+      sourceRef:
+        kind: HelmRepository
+        name: sentry
+      version: 8.x.x
+  interval: 1m0s
+  releaseName: sentry
+  targetNamespace: sentry
+  values:
+    system:
+      url: https://sentry.realliance.net
+      adminEmail: sentry@realliance.net
+    user:
+      email: sentry@realliance.net
+      password: iJZfmDClu1U3flGeHnBp9ODcddfh2lkkUGoII04AzLa9m0pEoXD95pbrlk05vT3V
+    ingress:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/use-regex: 'true'
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          more_clear_headers "Content-Security-Policy";
+          proxy_set_header X-Forwarded-Proto $scheme;
+      hostname: sentry.realliance.net
+      tls:
+        - hosts:
+            - sentry.realliance.net
+          secretName: sentry-tls
+    metrics:
+      enabled: true
+    nginx:
+      enabled: false
+    clickhouse:
+      clickhouse:
+        replicas: 1
+        configmap:
+          remote_servers:
+            replica:
+              backup:
+                enabled: false
+    redis:
+      cluster:
+        slaveCount: 0
+    rabbitmq:
+      replicaCount: 1
+    sentry:
+      worker:
+        replicas: 1
+    postgresql:
+      postgresqlPassword: postgres
+    slack:
+      clientId: '644284162789.1698504787813'
+      clientSecret: d2a8e900c117bdd4e2924a1d1d2cc8c2
+      signingSecret: 95e657fbe16e1bd1b3a918fc14100bec
+      legacyApp: false
+    github:
+      appId: 98698
+      appName: realliance-sentry
+      clientId: Iv1.636fa9fde958461e
+      clientSecret: 06648518db5af15f6ffeee0d0c4d22c16dc463ad
+      privateKey: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEpAIBAAKCAQEAldPFKLivS3Ey6ogqbmPGC7FvISJ3ntu/sfPvVTzoCKMyERX2
+        nUeK5/crydMlSZvAyOn68FQd9sFOcYMKzVUkW+OljWpdt62FzPzkEhTa3RhfPH8V
+        sn4f7U/EJD8eAm0uyz43/QJ78v+Y8NalXRmAeK92QUu97ZzFElqFqUTMP02d2649
+        mUxgucvn0S3GVsu5RgfbtLE2JlKsoYTa7ZE29HCtbeEj5iea9iPwbQTN/1z1n5JJ
+        9dGJmf7W0erhiAmuBeTn9RQZGKMYfS3fnXgNKcpFKnxXqlgXbVHrVOPSPotn6A4L
+        +B2INxENIO6uO8Na1CJJQdHcBx+t8WJzjUoa1wIDAQABAoIBAFm/TbWT02U0fJRi
+        VlBjsaklcvT9KXxeE5jsDuwXHMK3xvDXIC+cQEetFmzB7u8FvlhbV/aH3J8Hsg5q
+        uZi/rJTiazOniFXTOnfM8G0oUuXniHy7f2q5BDTp+AriR/6aGlKihXUn/MlVc+6o
+        FMwMz5j7ObHpRe7EXoQc9z2quVIdKI6tDwR5Vxc+HR4cmZcLExxurpe6mhOxbx8u
+        mGpGgNNqdLqMSLxc1pE8q+9wXPipRW+8WIm3YZcPJKQZRQ7GQxQ/cwPM2rtN9LJB
+        iHpRfFDNx2pE3wBX31USNecjt74hVxOf7+jyKdbaQ9ysouPSckU0p6qXndaF4GBZ
+        U5DzlYECgYEAxub1C+HroibqCq64gRw8sjRTCZ16QrX5M8pFOjXtqKTOVH/DkkSJ
+        x6oGzKbawIG6qJaVCYiBiznrS2T5gLDtGInXW/ANoTKQBegO/CLtMhuLqyZoEc7J
+        yO9LZyOdl+juKnodnfYbJ5maqN6w0mqonyNcDdb/djqv3YYcjBk9skECgYEAwNZd
+        ENBRo0dudP9I8sB3PM52N7hFskwguEfnJSzlVySRGRnuTvLTsLweg7tWVcOoA0ZK
+        D/Emk3IJiw1iAPJf2a+NqMu2P5t34fqo4J+W1LPBuHZ4kpcjE0SLb84d0t8FOXwB
+        Uo39y2EBH7+HYyJATQDNWPTVTaMK4Xhm69BrVxcCgYEArWAIXbEyGgfdni4qebBJ
+        X/SoJQt11MyWSoSXz2POo1/00kcEDG1dxAL7JkyTBZaPRADuLH8mnFuCNBfyPDD8
+        mpUcefFHkClozR04YqN3KmREXI1/zXX5AgNEMMUky5OodrI3OseZZ+1GmMh0TRXX
+        oc/Kn+22hDInter+20ftNYECgYEAoaXQQ9zs4ltpq2eoJd3S1kUX8iNlQU3xi6iy
+        iYY2BbOgchM7ojCJ5bf8OF8cwy4NNBmC0hRLSwQoHcktIzAJyzgPHrUNZAqWFveB
+        AzKkRE8fD9s3vWI2Q9uMqz9z3qWXApYBoctnOUpqn8t02VQH5MTMXkp2V+tZnqHI
+        XNrMcCcCgYBCx+lq8FYGxXhkBBE6AduWAIzLFL/K85VjP9o2dE0l6VpTqhBIzxA7
+        al1J00M4+gBA3WI6WDLcBV29eDrtLsNy7Mj1aAMoTKYPGVx0oCheB7QcURpYCLfG
+        bCLWSQTGhlvZOn7PAS63zjDsrsL7AXBMHXQa+sUVoeQdm6kTx0BnyA==
+        -----END RSA PRIVATE KEY-----
+      webhookSecret: a4161baef06d3e9508e1a49a7109bf5ae1c30f3a
+    config:
+      sentryConfPy: |
+        SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+        SESSION_COOKIE_SECURE = True
+        CSRF_COOKIE_SECURE = True
+        SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+        SENTRY_OPTIONS['github-login.require-verified-email'] = True
