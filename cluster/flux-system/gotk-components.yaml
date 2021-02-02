@@ -3149,7 +3149,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/kustomize-controller:v0.7.3@sha256:3192f71d73bec9477729e7ec51d59f749de54dccf4de4c859b43cb98ea4a985c
+          image: ghcr.io/fluxcd/kustomize-controller:v0.7.4@sha256:b3c107ce756b8b363d4886f9ecef6242e80e6cdf07853dd5fe2a49ae5d22edb1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
