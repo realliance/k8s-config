@@ -16,6 +16,35 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
+      initContainers:
+        - name: db-migrate
+          image: quay.io/realliance/senior-accounts:latest@sha256:1e6557908f9ed597a854764d7d6bd281308f38e3d75d60d6c18acfd0bed4b9d1
+          env:
+            - name: PG_HOST
+              value: acid-senior-accounts
+            - name: PG_DATABASE
+              value: senior_accounts
+            - name: PG_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rails.acid-senior-accounts.credentials
+                  key: username
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rails.acid-senior-accounts.credentials
+                  key: password
+            - name: RAILS_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rails-env
+                  key: master-key
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: rails-env
+                  key: sentry-dsn
+          command: bundle exec rails db:migrate
       containers:
         - name: rails
           image: quay.io/realliance/senior-accounts:latest@sha256:1e6557908f9ed597a854764d7d6bd281308f38e3d75d60d6c18acfd0bed4b9d1
