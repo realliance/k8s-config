@@ -28,7 +28,7 @@ spec:
         runAsGroup: 101
       containers:
         - name: home
-          image: quay.io/uface/home:0.7.1
+          image: quay.io/uface/home:0.7.1@sha256:50c826f9d07e938ff413909de5bb8954536a8a8e09c482c11fc3ced6133571ae
           ports:
             - containerPort: 8080
               protocol: TCP
