@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ace-home
+  namespace: ace-official
+  labels:
+    service: web
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; navigate-to https:; block-all-mixed-content";
+spec:
+  tls:
+    - hosts:
+        - uf-ace.com
+        - www.uf-ace.com
+      secretName: ace-home-tls
+  rules:
+    - host: uf-ace.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ace-home
+                port:
+                  number: 80
+    - host: www.uf-ace.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ace-home
+                port:
+                  number: 80
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ace-tls
+  namespace: ace-official
+spec:
+  secretName: ace-home-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  commonName: uf-ace.com
+  dnsNames:
+  - uf-ace.com
+  - www.uf-ace.com
+  privateKey:
+    rotationPolicy: Always
+    algorithm: ECDSA
+    size: 384

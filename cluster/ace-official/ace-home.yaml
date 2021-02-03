@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ace-home
+  namespace: ace-official
+  labels:
+    app: ace-home
+    service: web
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ace-home
+  template:
+    metadata:
+      namespace: ace-official
+      labels:
+        app: ace-home
+        service: web
+    spec:
+      securityContext:
+        runAsUser: 101
+        runAsGroup: 101
+      containers:
+        - name: home
+          image: quay.io/uface/home:0.6.2
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/usr/sbin/nginx","-s","quit"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ace-home
+  namespace: ace-official
+  labels:
+    service: web
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: ace-home
