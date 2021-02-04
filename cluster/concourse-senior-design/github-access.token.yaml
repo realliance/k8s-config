@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: github-access-token
   namespace: concourse-senior-design
 spec:
@@ -9,7 +10,6 @@ spec:
     value: AgBgFZYdCp1kYeZHN9tmpVIggvVzdlzchxPDx/n8g4KWZb75OH/AVXjidlbSVI/pXF5CzJ3JvsCIOThH11VE1cvfXgnmdDE7JWpUoDVzcy0zQWMLAYSZa+SpzKFcO/9C9b7/KC5WLcfY9drpSSMLxL1Q196gX3lL68pCzane7UHTbgu9YpRtNQNtoBAXehA2B5RmOY8RnkBLGYX5e1CcbsohpimODw9/G8zDmSgX005tEEDiZsLMCLBREO3xa/xTYzFVjnnrf7/+i8rsgmMDwUvwKCSrLZ/DGN7TfIIsORZXwFsIxHk2DdD+7Ak1i9Gjxp06ckPwxvWQ2KxpNCMEXtyNAOMGJl0Fkyp3v7PoyleFr7EEUZt8jrdfQOh3yAGccDtVe5uRiXz8FSsnBfKfM0eTwuuq1uSpnSD2nagXOR+zWqLMQIraTsM3rfD2h0/Vxohs0vSu5JEZUDCbvbgCmCpbXEYy+Tk6aDHSsbZFtFKvAy9Knkz7ZB14KXlF5JG/QRedwM+o7LKwSGHgFP1vrZm+5lqB1yYQWA9rfnd5UQBa/x4GbnTJbrowb2TGx0kN5Hi/I81Cmk2qUxW5feBr+tkYym/Zp7TMslBmX8aB8zfF4glgfc1IKv7e8Yb4g5fTQh/bUZpVS2yk4+Elq2K8Wpz6LGY7nrtehHmdJS+Jtj5SjI2UIu8xAcjrE8ReY10YiTv4gxjj//kWKfR9cIMOILUDcSjFuozxFPHaDE7bZprFrJRqpvIJmg7y
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: github-access-token
       namespace: concourse-senior-design
-

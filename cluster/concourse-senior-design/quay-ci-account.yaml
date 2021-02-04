@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: quay-ci-account
   namespace: concourse-senior-design
 spec:
@@ -10,7 +11,6 @@ spec:
     username: AgCgoO60w0y4kH84jj5KgyH2+ARm1haZG98MxWanu+Mq3QHsjtjidUp25xak+8rHHJH4pKaJkufo/2Klgq5ZA/bQHQN6kO8L4k7LNaG40F3BTcaK3nI9fFgYP0WixiYLiIg+hPwgVaXxS6oZCbWTW6XKH3m5aXW0i/I2lRl/zMgErg3Tr8pJFgaKt9og1iGnB/oVOe0CS714g9rr2SA08nwn986fYAFfPzygVQT/Stb9Fd+koptipunqYkclhS8DzpJ+OcDw8VQ2rt9zrZwkaNe9CqwFjyzILct0ok/N/2S7l0PL/O4OaLYAT3c5SQtrWfzmmiCJbROClkqwjMI1g9j5va4mMLHBP/urb49iNDpyAjc9NUNk0Q0x94uNGaiZT3IjhJgHEp0qkLBqAJ051qTO/pVReMDa6cKfB6VrzF2JutWOaFqvNAogKgOkWlnCSkZwq3UmrrpiuqSeGm2YrBuduUjn60CDfsf/PLcNNqzTS1A9YwZ1zMCNQLe6YB11ibvlRRrc2nIWjX8QyGp0tiRa9kp4RXoldWi4rSpQK6R9h92h9lTYvA0Z9kLaQBgdHXhxcfklGAUHOKBw5n0htujIAVwDLPapgxWthrbxpId8LHD2KQkf/mtu/vNG1vh1CwIupxk6/Yqwgnx9isqzzSJ0uAdhwByoB2TjSUnjJjUJp4yaSsLQgzezXSoooJGA7oIjbS7oSAscZpvJYYV5
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: quay-ci-account
       namespace: concourse-senior-design
-

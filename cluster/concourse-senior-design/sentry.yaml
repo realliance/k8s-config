@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: sentry
   namespace: concourse-senior-design
 spec:
@@ -11,7 +12,6 @@ spec:
     url: AgAOMpvmVrvZOTHEP0uBXC4Z0FXA+PTUbjH+ds6kH/vwzCtImDxNJXtY6ax2yi3vq8uev4olPDHLqRnqjaga9op7LvfkmQMvUHJh/E++n6axlVdFzziOQraW7yczjLheCpKwOw5SFfUkr0N3XOv49wLznj5ApYknnNmt8srnr9cQOXBcEFEIbNillRtclyN9bHOY65R41ACDvPyw7AkaTBEnM8OYc7+fMcetbQae0nZyCKgE19Uiep74NFr8tSYNEYfvGOH61mNrozQdAwX7qXKcN5yJV0rSdEhNsx1hku1UwpvB5pbTy7hyIPsPAJ9R5lyeKGnJ0SwaIZSCfQTwnAkNOq1LJIrdnw7kt4aS+1CCjL1bl2yuVZPjb4K3m9CzmQ4MaxzwLnCLblxXqYrUfDa1nleS2P3qwvjKjLAqXMIf6M66+iolw3m6fZeQXKj4THR44a7UFzTaItFu+DGWI6fC292+OvJ7bMQtoVYV+27W6mzKK0N1nY6DgDdTnZU6d7YTsBnTrnGcFUSVt3/Mib22L/f0LnUEcox+KD76XcLkuZD3/2k5F80P8xirfJz9roYKjnwprANvX5fi/54gPz7cOCVGH4ezLC9qdf9G9GeOj1slLe2xgutaTzMvUEABrV79K3o89eRhYZg2Q+qSY6Btpk8x7S4VmV4a/STuznAT+Sk41/6asVN214BLXECMLxdZgmbkYdqaThISDuTcZMS3L+OBZCOPUYZ3QDfMmk8=
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: sentry
       namespace: concourse-senior-design
-

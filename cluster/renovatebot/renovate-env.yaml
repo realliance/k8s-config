@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: renovate-env
   namespace: renovatebot
 spec:
@@ -10,8 +11,7 @@ spec:
     RENOVATE_TOKEN: AgCXHWYYFhfNK5kuhteg14ZALl+G7mD92MnwieaIqOXVePjg8audTZV+rjWS4/Rh4vogD4piZ5VCAF8Fu2TLfwd02skIiaSjI0NX+gbHhQLrX7K8tTO0VghqozcM9M3HU6RJrnnC+ztdNSbAKzEHsNidHGlBQX7Ut5XAUiQL3V04pX/efKIXyEtrbYbS4JggNGkG3B0ZzAbN0uUC1R1J41eeqnqDxHZlMEw6rjhkLRxtk0bTmI6AWX+epx2rKzEpIMsRhiyRnYSlFbAbqSj+55EmIjRY1c/LDtqN7KWmXhnnek5XXAA8aofg3ZE/8ORSydqFLEyNh1oGcxPRpO/Xa9HbFAyriZ6R73gFYuCh4pA3v4DSZNyonrGfKKdMNX4Fr+r9hFucvo72Tjj6IP3I+R8FfKuyojGotGlfkJrrmLDCtZaI11cT7zYP4MJd796Z0ja7RN2VgS9irykYlSuxPewuMw8KrFMb9gPR1vXVaXFYvrPv5eyviBOuhGzimQM/b3gX0QQ9v9jEgEGHx05pRfCPbpVv/DQbKktGgaaYv3RR4u1tcStIbKs1ve5PXa2usm1MT6zT+tf8dHpdaPP6j+cp6WcnOPEdU14QwJxVNGyDZq6+RcHimPFb0KTnD4nQl/LIOKOXxh+RbFpECWKX0hArxbd6OT2WNXfixGV7P75Ebxw7w3TsfqU6GnoF42gUcnhoAtuH1EqgzAvX4cV6U74d++p8avVo4TSgL0XefU8frYYyjcvTTiUJ
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: renovate-env
       namespace: renovatebot
     type: Opaque
-

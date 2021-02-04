@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: rails-env
   namespace: senior-accounts
 spec:
@@ -10,7 +11,6 @@ spec:
     sentry-dsn: AgCgPfqNNlHAvb2zx9cgWy40pja1J4YtjOMzBpPBYCcN8GcPL/mz84nD86JixZiirfbtPT187r/2BvkCMeXTGjMTqb2B6hdGoO+06F4cTmOJlk4xvqI0gvwL7W9MXflSv6XyhV0WPoY8TiiiFgP5K8AInBkSc729XZ5JJKdbxzsOlEnVxFbRUxTT3tgYiuLOEToSGfIPpgovsmsRUhfAJy536Mt+JySJwN98CRAvbce/RPfA8uv+6xPA6/Oi4euV2ACb2ar4jn01ESlgUt+lsYAfCMKC/dEvxF4TuedZ5YSpt8CCIUta9qVJLUHHrds8rEMn+Q/dkpIumRIyUXdLWlu0PFWCgdHKKs8454BGILfIeHVWF1F8uxudgmTFG5PJ9reEP20iknvq5/RUf/Emyby1almoFn0J0RBwfTYNNNYqSYfKzAR/320PDF8ur/R/d1AWstx0sqPvgy3/InrpQWPg7z+CVZ/thrPDHrRZc+Wb9Co4frkQR5o8ZQGvbJWxsBhHVQ6omd76Xs8Sz+cLLs1spFEbgKxaWvqXwGKDbAgYH8XhH4bkWk/qtOpC8qtOnZEr6hyEXsBlrgXVZtI8kFeiD3CYBLdZKQIjnnFsCHe4KetwnZBcOha1JfR9nQ1MBmbie8AFHr5pAnl0snhz2+9gz5ZQ3UrPMN1BS29NdVpSeAvhyiFOnufyyr0HqXW6bzBKnp10sY/L6+xyozSFnLSNax94krrOTqCEv5qyj2hJxYsg82eDRgEOXJXt6DWe5WlTdqwhBa3d3kcg7ou9iBKe
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: rails-env
       namespace: senior-accounts
-

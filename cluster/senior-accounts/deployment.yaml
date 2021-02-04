@@ -44,7 +44,7 @@ spec:
                 secretKeyRef:
                   name: rails-env
                   key: sentry-dsn
-          command: ['bundle', 'exec', 'rails', 'db:migrate']
+          command: [bundle, exec, rails, db:migrate]
       containers:
         - name: rails
           image: quay.io/realliance/senior-accounts:latest@sha256:f506dae344951ca46b845d49ed5a34a85c2afb6c329417eb08422b977fc27fea
