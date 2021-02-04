@@ -1,0 +1,36 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: agones
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: https://agones.dev/chart/stable
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: agones
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: agones
+      sourceRef:
+        kind: HelmRepository
+        name: agones
+      version: 1.12.x
+  interval: 1m0s
+  releaseName: agones
+  targetNamespace: agones
+  values:
+    agones:
+      ping:
+        http:
+          expose: false
+        udp:
+          annotations:
+            external-dns.alpha.kubernetes.io/hostname: ping.senior.realliance.net
+      allocator:
+        install: false
