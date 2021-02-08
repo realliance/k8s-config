@@ -37,7 +37,6 @@ spec:
           ssl_prefer_server_ciphers off;
         server-tokens: 'false'
         ssl-early-data: 'false'
-        ssl-protocols: TLSv1.3
         use-geoip: 'false'
         use-geoip2: 'false'
         enable-ocsp: 'true'
