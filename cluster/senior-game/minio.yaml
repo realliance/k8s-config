@@ -1,5 +1,5 @@
 ---
-apiVersion: minio.min.io/v2
+apiVersion: minio.min.io/v1
 kind: Tenant
 metadata:
   name: client-files-minio
@@ -17,7 +17,7 @@ spec:
     replicas: 1
     consoleSecret:
       name: minio-console-secret
-  pools:
+  zones:
     - servers: 1
       volumesPerServer: 1
       volumeClaimTemplate:
