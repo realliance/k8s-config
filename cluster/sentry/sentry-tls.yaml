@@ -12,7 +12,6 @@ spec:
   commonName: sentry.realliance.net
   dnsNames:
     - sentry.realliance.net
-    - dummy2.realliance.net
   privateKey:
     rotationPolicy: Always
     algorithm: ECDSA
