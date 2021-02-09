@@ -7,3 +7,4 @@ resources:
   - minio.yaml
   - minio-creds-secret.yaml
   - minio-console-secret.yaml
+  - minio-service-account.yaml

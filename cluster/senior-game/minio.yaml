@@ -12,20 +12,12 @@ spec:
   mountPath: /export
   requestAutoCert: false
   podManagementPolicy: Parallel
-  securityContext:
-    enabled: true
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
-  env:
-    - name: MINIO_USERNAME
-      value: 'minio'
-    - name: MINIO_GROUPNAME
-      value: 'minio'
-    - name: MINIO_UID
-      value: '1000'
-    - name: MINIO_GID
-      value: '1000'
+  serviceAccountName: minio-pods
+  console:
+    image: minio/console:v0.5.2@sha256:436cd993f0cc8639e8d7d902eb0549c59e701e93887821c9eee4c7586be879c8
+    replicas: 1
+    consoleSecret:
+      name: minio-console-secret
   zones:
     - servers: 1
       volumesPerServer: 4
