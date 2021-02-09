@@ -23,8 +23,10 @@ spec:
     consoleSecret:
       name: minio-console-secret
   env:
-    MINIO_USERNAME: 1000
-    MINIO_GROUPNAME: 1000
+    - name: MINIO_USERNAME
+      value: '1000'
+    - name: MINIO_GROUPNAME
+      value: '1000'
   zones:
     - servers: 1
       volumesPerServer: 4
