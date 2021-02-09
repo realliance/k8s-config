@@ -4,3 +4,6 @@ kind: Kustomization
 namespace: senior-game
 resources:
   - namespace.yaml
+  - minio.yaml
+  - minio-creds-secret.yaml
+  - minio-console-secret.yaml
