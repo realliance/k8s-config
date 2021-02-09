@@ -19,8 +19,12 @@ spec:
     fsGroup: 1000
   env:
     - name: MINIO_USERNAME
-      value: '1000'
+      value: 'minio'
     - name: MINIO_GROUPNAME
+      value: 'minio'
+    - name: MINIO_UID
+      value: '1000'
+    - name: MINIO_GID
       value: '1000'
   zones:
     - servers: 1
