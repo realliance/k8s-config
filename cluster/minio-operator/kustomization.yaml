@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: master
+    tag: v3.0.29
   url: https://github.com/minio/operator.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
