@@ -30,7 +30,7 @@ spec:
           command: [/bin/sh, -c, ln -sf /data/cert/tls.crt /opt/murmur/cert/fullchain.pem; ln -sf /data/cert/tls.key /opt/murmur/cert/privkey.pem]
       containers:
         - name: mumble
-          image: docker.io/goofball222/murmur:1.3.3@sha256:1480d63d4da4db7d8a8f5a96b6abb9d18a17166e8552f03aaf03d7c38889c9e1
+          image: docker.io/goofball222/murmur:1.3.4@sha256:9867bd7495f8ebbfd403c352775fae0f062f2ba8a40cca71912f32687eded798
           ports:
             - containerPort: 64738
           env:
