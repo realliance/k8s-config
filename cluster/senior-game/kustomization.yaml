@@ -6,3 +6,4 @@ resources:
   - namespace.yaml
   - minio.yaml
   - minio-creds-secret.yaml
+  - minio-ingress.yaml
