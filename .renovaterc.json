@@ -7,9 +7,10 @@
     ":pinVersions",
     "docker:pinDigests",
     ":rebaseStalePrs",
-    ":automergePatch",
+    ":automergeMinor",
     ":automergeDigest",
-    ":skipStatusChecks"
+    ":skipStatusChecks",
+    "group:allNonMajor"
   ],
   "kubernetes": {
     "fileMatch": ["cluster/.+\\.yaml$"]
