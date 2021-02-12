@@ -1,0 +1,56 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: meacham
+  namespace: meacham
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: cmeacham98@gmail.com
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: agones-admin
+rules:
+  - apiGroups:
+      - agones.dev
+      - fleets.agones.dev
+      - autoscaling.agones.dev
+      - allocation.agones.dev
+    resources: ['*']
+    verbs: ['*']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: agones-matchmaking
+rules:
+  - apiGroups: ['']
+    resources: [events]
+    verbs: [create, patch]
+  - apiGroups: [allocation.agones.dev]
+    resources: [gameserverallocations]
+    verbs: [create, get, list, watch]
+  - apiGroups: [agones.dev]
+    resources: [gameservers, gameserversets]
+    verbs: [get, list, watch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: meacham-agones
+  namespace: meacham
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: agones-admin
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: cmeacham98@gmail.com
