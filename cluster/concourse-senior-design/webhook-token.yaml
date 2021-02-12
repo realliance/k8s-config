@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp:
+  name: webhook-token
+  namespace: concourse-senior-design
+spec:
+  encryptedData:
+    value: AgCVYF034O4xZPAr4ZEkbgwevL7bmacq692Af1nl8bp14e1WCf7mp+4sKwYP779kN0Em7ZeLXT4JmVxfhLPJtGjQSMq5hJte6m6cbyZCrRskQcEbea2T0UxM6Z52ZlBlTDrA5IwXVuVO5hJcyoxQ7GGTnSx3cHqY76ZlNnWu1uPTmZMcQYbtGYPvSHcdbaUpKPTj+aTGpMSLZ9JSe+l1mZJBEblzseCtCyE0+80Zt3/EHq0tWIJi3ZOACWNs2OmAW8OEZnNmshyu9jG2owA4wG4lk0KKii6RkHx8XEGsRcho0caZ4uxl92yKmMKXuS6O0GONbTHsK+33BmrdNaabd7OE6r6N0UcvjFE0BapFFJbKzKhX7RJc8jziuqksnBeETrixIBvatk8hkqqX+r97IC0YQz84cFJ6mXT0+VeNsj+uFeeW1sELk8SimRBCt7OzxUECp48AXlxKMldGzlpEgnXv2r6r4lN7PXKlabPW+LNGsAkto1F5qk61mPTrwdg4lqJ2XKMe54r4tNk/tyEqHL5pEmVu1pVwfmWj1JWiBAeWRsh8NsoiOazzNjY7Kdx/+e0rlPBe6eoKoxNX1JTvIhO5x8Dfb7NHathUuy/Jp1Xo3oEACkQ13VMD9vWir/z/gGduzOChg0QZWxPcwoUaim0bet84eu+WhPmAoXKCCent2QcLsaIfAKTE9yazfgY/3dXYeYWU/eGDawS5nX1v1AISK/080KhAJeFwxJG8ljbMMw==
+  template:
+    metadata:
+      creationTimestamp:
+      name: webhook-token
+      namespace: concourse-senior-design
