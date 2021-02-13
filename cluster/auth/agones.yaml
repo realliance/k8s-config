@@ -23,3 +23,64 @@ rules:
   - apiGroups: [agones.dev]
     resources: [gameservers, gameserversets]
     verbs: [get, list, watch]
+---
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: agones-controller
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: docker/default,runtime/default
+    seccomp.security.alpha.kubernetes.io/defaultProfileName: runtime/default
+spec:
+  allowPrivilegeEscalation: false
+  forbiddenSysctls:
+    - '*'
+  fsGroup:
+    ranges:
+      - max: 65535
+        min: 1
+    rule: MustRunAs
+  requiredDropCapabilities:
+    - ALL
+  runAsUser:
+    rule: MustRunAsNonRoot
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    ranges:
+      - max: 65535
+        min: 1
+    rule: MustRunAs
+  volumes:
+    - configMap
+    - emptyDir
+    - projected
+    - secret
+    - downwardAPI
+    - persistentVolumeClaim
+  hostPorts:
+    - min: 7000
+      max: 8000
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: psp:agones-controller
+rules:
+  - apiGroups: [policy]
+    resourceNames: [agones-controller]
+    resources: [podsecuritypolicies]
+    verbs: [use]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: psp:agones-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp:agones-controller
+subjects:
+  - kind: ServiceAccount
+    name: agones-controller
+    namespace: agones
