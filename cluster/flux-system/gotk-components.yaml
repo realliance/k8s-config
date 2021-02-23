@@ -3304,7 +3304,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/source-controller:v0.9.0@sha256:d7a3c8de5a02acb42c45e72479124f66c2d902acd2c8bcc76f1765de70d8b13f
+          image: ghcr.io/fluxcd/source-controller:v0.9.0@sha256:44ca467058a328cadef9a65ebc0746eeac6c4272c74218ddccbd9177c5dead63
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
