@@ -72,7 +72,7 @@ spec:
               - ci.realliance.net
     worker:
       kind: Deployment
-      replicas: 1
+      replicas: 3
     podSecurityPolicy:
       create: true
     secrets:
