@@ -60,9 +60,6 @@ spec:
         baggageclaim:
           logLevel: error
           driver: detect
-        containerd:
-          restrictedNetworks:
-            - 10.0.0.0/8
     web:
       ingress:
         enabled: true
