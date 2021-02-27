@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp:
+  name: slack-ci-senior
+  namespace: concourse-senior-design
+spec:
+  encryptedData:
+    value: AgCUHAsNNKt+Uy5odLVvyTUfERYSpPyjzkY2LpKaA0v0Cyil+mHVCVeqog1n1pD/iNqLdcjaYWfEdkLB33vOKNk772ODuEljmydsEP8ZkfKlBXGAa14QANWco8FT39DytXkJtd3MofQnwmhr5UmF7LOYYC3jxPwhVYK+BDJeMFSfwFnzVfcRhL4KgPLeNCuakrilnk+ci6WyBqlJBKVz25XtlY3K+sGS8aeNFwCiI9gFQDdLT0LkicGIMd2BgXVqc8ibg7QNn8x3IjiKDriQp9XoCNTnsuxJAOgEDFViEnm1wshJtr+UTQKPqSM+l7N/zWRDDSeQyXQS+yFpkyjJGrN6BRWRM+PzOac1FekSmfBXlqWcifg7FzA4SKJ3JEIbfxRw0r/eRPniAPWQyveYVgpXGsnCo55mKLZzFaas9AFkcu2xOlt2Nm1OxcoRM8O6JyKIa5qOQJhe08MnvifO85TX65RJve2osaMglnVVh3QxUpT8Ctv6IuDZW2iFc2seSLsAV4g75qoP7AhTwXkrwIokiE1fo+KBjQ1hMp6+fl/ETzQG9xMa8H71aCalX8dhM7ek7l3i5bKq75AS+rloymrfpZpotWJctIAKQXJuYUAPCxmipruSk2BhTYpmnKb0ZGRdTDg3j/xcQFYvCKwYebV5kVA++QO6SCcvhj3/sjaTBLe9JarbRInY3GDYTN+S7oUmNjba6bDuUuWDMrwv5qhONufmriizIkZPwNhIhv9XMnfNuBsm1FKeIN3Cji5XQVsFQJGTtH53ub8yk4P9/84HPSqF7my1c0dJ0JwQt/5f
+  template:
+    metadata:
+      creationTimestamp:
+      name: slack-ci-senior
+      namespace: concourse-senior-design
