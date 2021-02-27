@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: concourse
-      version: 14.5.1
+      version: 14.x.x
   interval: 1m0s
   releaseName: concourse
   targetNamespace: concourse
@@ -55,9 +55,15 @@ spec:
             groupsKey: groups
             userNameKey: email
       worker:
+        runtime: containerd
         logLevel: error
         baggageclaim:
           logLevel: error
+        containerd:
+          restrictedNetworks:
+            - 10.0.0.0/8
+            - 172.16.0.0/12
+            - 192.168.0.0/16
     web:
       ingress:
         enabled: true
