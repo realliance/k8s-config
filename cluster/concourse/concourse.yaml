@@ -55,7 +55,7 @@ spec:
             groupsKey: groups
             userNameKey: email
       worker:
-        runtime: containerd
+        runtime: garden
         logLevel: error
         baggageclaim:
           logLevel: error
