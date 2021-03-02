@@ -6,7 +6,7 @@ metadata:
 data:
   config.json: |-
     {
-      "onboardingConfig": { "extends": ["config:base", ":prHourlyLimitNone", ":prConcurrentLimitNone", ":pinVersions", "docker:pinDigests", ":rebaseStalePrs"] },
+      "onboardingConfig": { "extends": ["config:base", ":prHourlyLimitNone", ":prConcurrentLimitNone", ":pinVersions", "docker:pinDigests", ":rebaseStalePrs", "group:allNonMajor"] },
       "onboardingConfigFileName" : ".renovaterc.json",
       "platform": "github",
       "autodiscover": true,
