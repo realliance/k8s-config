@@ -28,7 +28,7 @@ spec:
         runAsGroup: 101
       containers:
         - name: home
-          image: quay.io/realliance/realliance.net:1.0.0
+          image: quay.io/realliance/realliance.net:1.0.0@sha256:c819edfa07d0651ba514e4a298419301381c4d4273e944708e39a2331f123648
           ports:
             - containerPort: 8080
               protocol: TCP
