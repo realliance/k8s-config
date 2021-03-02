@@ -32,7 +32,7 @@ spec:
             medium: Memory
       containers:
         - name: home
-          image: quay.io/realliance/realliance.net:1.0.1
+          image: quay.io/realliance/realliance.net:1.0.1@sha256:4670e9b17c6ace6fb8d5baa931c8c04bc0e794bf7409c9f1680f683176544bdf
           ports:
             - containerPort: 8080
               protocol: TCP
