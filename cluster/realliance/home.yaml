@@ -26,12 +26,23 @@ spec:
       securityContext:
         runAsUser: 101
         runAsGroup: 101
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory
       containers:
         - name: home
-          image: quay.io/realliance/realliance.net:1.0.0@sha256:c819edfa07d0651ba514e4a298419301381c4d4273e944708e39a2331f123648
+          image: quay.io/realliance/realliance.net:1.0.1
           ports:
             - containerPort: 8080
               protocol: TCP
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsUser: 101
+            runAsGroup: 101
+          volumeMounts:
+          - mountPath: /tmp
+            name: tmp
           livenessProbe:
             httpGet:
               path: /health
