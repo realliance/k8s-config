@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  url: https://charts.bitnami.com/bitnami/index.yaml
+  url: https://charts.bitnami.com/bitnami
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
-      version: 6.2.1-debian-10-r9
+      version: 6.2.0
   interval: 1m0s
   releaseName: cozezone-redis
   targetNamespace: cozezone
