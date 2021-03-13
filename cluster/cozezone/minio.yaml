@@ -22,7 +22,7 @@ spec:
       name: minio-console-secret
   zones:
     - servers: 1
-      volumesPerServer: 1
+      volumesPerServer: 4
       volumeClaimTemplate:
         metadata:
           name: data
