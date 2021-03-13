@@ -16,7 +16,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: bitnami/redis
+      chart: redis
       sourceRef:
         kind: HelmRepository
         name: bitnami
