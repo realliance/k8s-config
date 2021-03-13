@@ -9,6 +9,7 @@ resources:
   - ingress.yaml
   - minio.yaml
   - minio-secrets.yaml
+  - minio-creds-secret-console.yaml
   - namespace.yaml
   - psql.yaml
   - redis.yaml

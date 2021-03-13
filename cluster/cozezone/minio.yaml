@@ -18,6 +18,8 @@ spec:
     fsGroup: 1000
   console:
     replicas: 0
+    consoleSecret:
+      name: minio-console-secret
   zones:
     - servers: 1
       volumesPerServer: 4
