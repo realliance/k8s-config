@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
-      version: 6.2.0
+      version: 12.6.4
   interval: 1m0s
   releaseName: cozezone-redis
   targetNamespace: cozezone
