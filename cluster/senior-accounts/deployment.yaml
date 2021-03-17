@@ -18,7 +18,7 @@ spec:
         fsGroup: 1000
       initContainers:
         - name: db-migrate
-          image: quay.io/realliance/senior-accounts:latest@sha256:af468516a92b57a23e559727f5c8d0c296e704eb05441e8a6060bc468034779d
+          image: quay.io/realliance/senior-accounts:latest@sha256:2891c857a2eee9f8e620e5ee418638f0c331bc041483aeb42fe6b4ddffcbeefc
           env:
             - name: PG_HOST
               value: acid-senior-accounts
@@ -47,7 +47,7 @@ spec:
           command: [bundle, exec, rails, db:migrate]
       containers:
         - name: rails
-          image: quay.io/realliance/senior-accounts:latest@sha256:af468516a92b57a23e559727f5c8d0c296e704eb05441e8a6060bc468034779d
+          image: quay.io/realliance/senior-accounts:latest@sha256:2891c857a2eee9f8e620e5ee418638f0c331bc041483aeb42fe6b4ddffcbeefc
           ports:
             - containerPort: 8080
           env:
