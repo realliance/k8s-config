@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ace-event
+  namespace: ace-official
+spec:
+  selector:
+    matchLabels:
+      app: ace-event
+  template:
+    metadata:
+      labels:
+        app: ace-event
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: ace-event
+          image: quay.io/scoobydoo181/ace-event-server:latest@sha256:49e3e0d106a196a532b0fe64fa757976a6f226b0631f073009c6bcfc62c14fec
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: ace-event
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ace-event
+  namespace: ace-official
+spec:
+  selector:
+    app: ace-event
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000

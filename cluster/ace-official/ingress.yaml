@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -6,7 +7,7 @@ metadata:
   labels:
     service: web
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; navigate-to https:; block-all-mixed-content";
 spec:
@@ -36,6 +37,16 @@ spec:
                 name: ace-home
                 port:
                   number: 80
+    - host: event.uf-ace.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ace-event
+                port:
+                  number: 80
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -49,8 +60,9 @@ spec:
     name: letsencrypt-prod
   commonName: uf-ace.com
   dnsNames:
-  - uf-ace.com
-  - www.uf-ace.com
+    - uf-ace.com
+    - www.uf-ace.com
+    - event.uf-ace.com
   privateKey:
     rotationPolicy: Always
     algorithm: ECDSA
