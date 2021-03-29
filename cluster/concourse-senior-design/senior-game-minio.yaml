@@ -1,7 +1,8 @@
+---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
+  creationTimestamp:
   name: senior-game-minio
   namespace: concourse-senior-design
 spec:
@@ -10,7 +11,6 @@ spec:
     secretkey: AgCc/OnO9MZ2RCoxt04hymPUf9TbEkEZaKuek1ENtDSkyr2qGAmsyurXXR374HodoubaQfeY0ucYYrZcogcOrf16JYRL7zFi/WViRlpKvO+K+Up8HomTpyBB5+eDfkNU1UC8Dvy4PIWsCja4MwvdzyMrExiF9FPB+HQHSAlzsAc/UOdz2YJzd3DeJTKa7tCJSb/b8NAyJFuJ7+2ju7UxfXDjT0ZXhJAboTQ6N75tuzNbTXRbehy0MiaL/b3jUYsAiohCN+GOTaFPzI0IFLP+UQ2QgyA5cW5XojWKbhKS6GZhaM3UatKCwOtPRRxAFk0E393VXbti+Ie+nFrHvFErZu6OQ3DbySK/sIdYFc4gV/QbD1P59c6Vmz9gNIMG0zmaErsod0RfuX3yhedcRpY8PQsYbHNUyyHOtG8coAZXAWk3hOUrVWM89w7e6zMGhi38Nn8xPkwkY1EMMrVuAfCXYLWz5kQMZGLAGuIPhUF0+ydf6Oeye28fbQ838b8UgfiW8vpGgI58xjoiBgqUfuGFEgeL5tux1XhYOEP0YZ/+0UxgOHOjIB6nzkxs4reOWEWGRRz8ujYjjOnnWPxEm9mhFzyZdCCOp5F/pVOOp167dtcdiISJnbBG9vJ4HEav7UNh2W/kgzcC26Rlo8kZLe07ju6Mk0H6CFUPT/ajfJtxHeP1bJwK5whMQ295GO/mnlgYoE1y0f0jEHjs1ATo4SWui0vsttTYIhAU79bwa89+Q9QWnA==
   template:
     metadata:
-      creationTimestamp: null
+      creationTimestamp:
       name: senior-game-minio
       namespace: concourse-senior-design
-

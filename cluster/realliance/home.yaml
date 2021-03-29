@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -41,8 +42,8 @@ spec:
             runAsUser: 101
             runAsGroup: 101
           volumeMounts:
-          - mountPath: /tmp
-            name: tmp
+            - mountPath: /tmp
+              name: tmp
           livenessProbe:
             httpGet:
               path: /health
@@ -52,7 +53,7 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
+                command: [/usr/sbin/nginx, -s, quit]
 ---
 apiVersion: v1
 kind: Service

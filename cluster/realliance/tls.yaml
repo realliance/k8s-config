@@ -1,3 +1,4 @@
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -10,8 +11,8 @@ spec:
     name: letsencrypt-prod
   commonName: realliance.net
   dnsNames:
-  - realliance.net
-  - www.realliance.net
+    - realliance.net
+    - www.realliance.net
   privateKey:
     rotationPolicy: Always
     algorithm: ECDSA
