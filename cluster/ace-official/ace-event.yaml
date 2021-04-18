@@ -19,7 +19,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: ace-event
-          image: quay.io/scoobydoo181/ace-event-server:latest@sha256:86ef4861ed2c6bca15081ece50bb66ee6d67a83b39e1c25b2fef12a8565023b3
+          image: quay.io/scoobydoo181/ace-event-server:latest@sha256:da18c38a8f0098926de0181cca0c261e1c7886ae176c21b077f70b049408fb0e
           ports:
             - containerPort: 3000
           envFrom:
