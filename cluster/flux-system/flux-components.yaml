@@ -2642,7 +2642,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/helm-controller:v0.9.0@sha256:92b891e495d89e53f5ba68d45ce99e865e71a0dfed38840e2c2ca0de0a35c0f0
+          image: ghcr.io/fluxcd/helm-controller:v0.10.0@sha256:6145dc005a8bdd515919a6cada5530968a241b3f1e1d9e7121e216d64127f35e
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2715,7 +2715,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/kustomize-controller:v0.11.0@sha256:5953879c2c7d6ce19b01ab9c2de2f178974b569c11f6d8c2cc82474927e4976f
+          image: ghcr.io/fluxcd/kustomize-controller:v0.11.1@sha256:787cfd39af503b0e654b8a241ad4ffaea035e77957ba8cca7f1c293e54efb681
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2789,7 +2789,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/notification-controller:v0.12.0@sha256:c95808ce22d08e2a66c6fba81cc97f745313a37936c322360805af267f858d56
+          image: ghcr.io/fluxcd/notification-controller:v0.13.0@sha256:19f782c9501738ef31ad17caa27e69fab9ec32834814fdfc0b6cc4801b931b69
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2873,7 +2873,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/source-controller:v0.11.0@sha256:aaead4bf21ba8f4cc4f777c1e337cf860039b370ef8334d1bcd9071eaab6952a
+          image: ghcr.io/fluxcd/source-controller:v0.12.1@sha256:d1ca488731482ce517dd72e2aeff9a70a1eaf05ad193c48262fcef0aad3c8f2b
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
