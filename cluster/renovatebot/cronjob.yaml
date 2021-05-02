@@ -18,7 +18,7 @@ spec:
             fsGroup: 1000
           containers:
             - name: renovate
-              image: docker.io/renovate/renovate:24.119.15@sha256:79c4fde23afe8338f36e154fc8d60f319c28dd9e2d1ba01b8d53add1a58870a0
+              image: docker.io/renovate/renovate:24.119.15@sha256:c7921aa1cd0729a97739454ece63c41688fa37f4f556a382c5f440b0fa3efe5f
               envFrom:
                 - secretRef:
                     name: renovate-env
