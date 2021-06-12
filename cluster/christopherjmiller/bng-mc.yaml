@@ -38,6 +38,7 @@ spec:
       hardcore: true
       pvp: true
       icon: https://raw.githubusercontent.com/ChristopherJMiller/bng-site/master/assets/bng_discord_icon.png
+      whitelist: Realmic
       ops: Realmic
       motd: BNG Hardcore MC
       jvmXXOpts: -XX:-OmitStackTraceInFastThrow -XX:+OptimizeStringConcat -XX:G1HeapRegionSize=32M -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20
