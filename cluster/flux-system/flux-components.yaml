@@ -2715,7 +2715,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/kustomize-controller:v0.13.3@sha256:877c41dab7d7d4f97f8b283177c769642c9bf19ea6b62378604647fa108f475a
+          image: ghcr.io/fluxcd/kustomize-controller:v0.14.1@sha256:545126048c252d5b02a9702b171e62c13a9252078eb074c569030e8c95f08574
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2789,7 +2789,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ghcr.io/fluxcd/notification-controller:v0.15.1@sha256:bf46c84fef16da7a0aa333387437fde45dcad6592c07a7b1b382013fba9b2951
+          image: ghcr.io/fluxcd/notification-controller:v0.16.0@sha256:6295839811f39c39e62ea3dc01f0bcb30c3d87ace06d438a59ce2a1844b76089
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
