@@ -8,7 +8,6 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-    commit: 992cd925818176c607e2e7a7dcf2d5712a8ddcf8
   url: https://github.com/metallb/metallb.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
