@@ -15,11 +15,24 @@ spec:
   postgresql:
     version: '13'
   teamId: acid
-  enableMasterLoadBalancer: true
-  serviceAnnotations:
-    external-dns.alpha.kubernetes.io/hostname: db.hci.realliance.net
   users:
     postgres: []
     postgres_dev: []
   volume:
     size: 4Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-endpoint
+  namespace: hci
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: db.hci.realliance.net
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: psql
+  selector:
+    app: acid-database
