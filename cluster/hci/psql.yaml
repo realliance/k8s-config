@@ -35,5 +35,5 @@ spec:
       protocol: TCP
       name: psql
   selector:
-    name: acid-database-0
+    cluster-name: acid-database
   type: LoadBalancer
