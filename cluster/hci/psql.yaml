@@ -7,6 +7,7 @@ metadata:
 spec:
   databases:
     hci: postgres
+    hci_dev: postgres_dev
   numberOfInstances: 1
   spiloRunAsUser: 101
   spiloRunAsGroup: 103
@@ -14,7 +15,10 @@ spec:
   postgresql:
     version: '13'
   teamId: acid
+  serviceAnnotations:
+    external-dns.alpha.kubernetes.io/hostname: db.hci.realliance.net
   users:
     postgres: []
+    postgres_dev: []
   volume:
     size: 4Gi
