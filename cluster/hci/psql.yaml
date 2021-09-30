@@ -2,7 +2,7 @@
 apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
-  name: hci-db
+  name: acid-database
   namespace: hci
 spec:
   databases:
