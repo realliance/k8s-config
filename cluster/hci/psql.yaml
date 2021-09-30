@@ -1,0 +1,23 @@
+---
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: hci-db
+  namespace: hci
+spec:
+  databases:
+    hci: postgres
+  numberOfInstances: 1
+  spiloRunAsUser: 101
+  spiloRunAsGroup: 103
+  spiloFSGroup: 103
+  postgresql:
+    version: '14'
+  teamId: hci
+  users:
+    hci_user: []
+    postgres:
+      - superuser
+      - createdb
+  volume:
+    size: 4Gi
