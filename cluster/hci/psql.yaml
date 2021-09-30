@@ -12,7 +12,7 @@ spec:
   spiloRunAsGroup: 103
   spiloFSGroup: 103
   postgresql:
-    version: '14'
+    version: '13'
   teamId: hci
   users:
     hci_user: []
