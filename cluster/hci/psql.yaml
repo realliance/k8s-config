@@ -36,3 +36,4 @@ spec:
       name: psql
   selector:
     app: acid-database
+  type: LoadBalancer
