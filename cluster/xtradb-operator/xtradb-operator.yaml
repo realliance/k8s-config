@@ -16,7 +16,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: xtradb-operator
+      chart: pxc-operator
       sourceRef:
         kind: HelmRepository
         name: percona
