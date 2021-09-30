@@ -12,12 +12,9 @@ spec:
   spiloRunAsGroup: 103
   spiloFSGroup: 103
   postgresql:
-    version: '11'
-  teamId: hci
+    version: '13'
+  teamId: acid
   users:
-    hci_user: []
-    postgres:
-      - superuser
-      - createdb
+    postgres: []
   volume:
     size: 4Gi
