@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-operator
+data:
+  spilo_allow_privilege_escalation: false
+  spilo_runasuser: 101
+  spilo_runasgroup: 103
+  spilo_fsgroup: 103

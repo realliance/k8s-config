@@ -6,3 +6,5 @@ bases:
   - github.com/zalando/postgres-operator/manifests
 resources:
   - namespace.yaml
+patchesStrategicMerge:
+  - configmap.yaml
