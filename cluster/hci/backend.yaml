@@ -29,7 +29,7 @@ spec:
         runAsGroup: 101
       containers:
         - name: backend
-          image: ghcr.io/gatorcomputerinteraction/db-backend:v0.2.1
+          image: ghcr.io/gatorcomputerinteraction/db-backend:v0.2.1@sha256:524cd415aef4aa61c8573de6548993bb3f874d10e556796fc707ef754a5ea071
           envFrom:
             - secretRef:
                 name: backend-conn
