@@ -27,12 +27,19 @@ spec:
       securityContext:
         runAsUser: 101
         runAsGroup: 101
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory
       containers:
         - name: backend
           image: ghcr.io/gatorcomputerinteraction/db-backend:v0.2.1
           envFrom:
             - secretRef:
                 name: backend-conn
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp
           ports:
             - containerPort: 80
           securityContext:
