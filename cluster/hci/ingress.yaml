@@ -37,6 +37,16 @@ spec:
     - host: api.hci.realliance.net
       http:
         paths:
+          - path: /schedule
+            pathType: Prefix
+            backend:
+              service:
+                name: scheduler
+                port:
+                  number: 80
+    - host: api.hci.realliance.net
+      http:
+        paths:
           - path: /
             pathType: Prefix
             backend:
