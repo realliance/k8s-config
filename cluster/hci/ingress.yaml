@@ -1,0 +1,46 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hci-tls
+  namespace: hci
+spec:
+  secretName: hci-tls-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  commonName: hci.realliance.net
+  dnsNames:
+    - hci.realliance.net
+    - api.hci.realliance.net
+    - schedule.hci.realliance.net
+  privateKey:
+    rotationPolicy: Always
+    algorithm: ECDSA
+    size: 384
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hci
+  namespace: hci
+  labels:
+    service: web
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+    - hosts:
+        - api.hci.realliance.net
+      secretName: hci-tls-tls
+  rules:
+    - host: api.hci.realliance.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 80

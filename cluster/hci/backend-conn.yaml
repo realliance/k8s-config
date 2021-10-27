@@ -1,0 +1,17 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp:
+  name: backend-conn
+  namespace: hci
+spec:
+  encryptedData:
+    CONN_STRING: AgALV4U3UU0G6eTgd2ZO1CkLMgf9pBQesJzlzl81MHOh2wpocN9tcOOjDp0qp6JKpDd/rNiZkJUIE/KJvM4p2OyoUVNSx6ZrbP26jj+X6K/zDoQQ+GEPxwKIC8sa0UWyE9QchkEU6v6KAxH+oTY05AqzHj+N/5pE5w5zhI+gVCywjo+2HswiWotj2SwP6S6rp70lDZiDfyIqilopUtVkC8MCj7ykkqCxu1w3BxjLItqojkptXGqOxYhT0JsNnZClZ5DIwiJfVX2jvkybjG4ykrBDeZW7GBtdhsCoqX4ZMAEvQhr86dGRoK2uJPzrbXJ6Qq+kFU1TnKapadjGE9fTtm7c6kU5XlU3YDS4uX2mluuBhaUTTRCG30/nC/rHwYwGIQywNh5WPFZwBlQtp3VuYwu6zvF4qlM4GHeHv7uk2I71SjUFPeBnKPZ8ErUc6yO/ul7Ux2iy62IyYEvY1O51Ik3AuFp6FrL6iM/tmChPzpF5sMFT5LPn8CC5IEb9tWrZDYfKFOwSulxqk1x1hfPOt24ir0fFd3lDUwqHdu0aHuDsP/3AJjl0O9IbSKBwekSQ/ZjDiSu5kXUCiroi+qbmawmSRZWo9dcPtOOntmsTB5x/XwLfyMJKknVZgQh/t/sqN/5Y2hHVTMtKJ4fpBs0XrJSvQBxMxCm6e0Fk3W10Iz/vOVW0oom3V//sF4cj8rBFRA3RX4aU837kDl25Dq983J9pg3UMipKq1zt3b5YUSpNSKSRzgOB8hapTtGDKePK4CDeicfWfOvRk1O8dYcrs+moLvSyOXKOfePTUjPq24XfFEXrp4//MngQtnHeo0ACHDDW9QMHI5YKHdjkCcjwsAm427vr+BGq6hDQFiozbkkFN4/QNyqVkI7/yTaoEmhXzLWRLidEd659yqBlXBO4daTwY/dVhz6dyxzLkUcX/g9hqtvIy2pH9Mivxu1xlWwVOWuqiJ7mBYw==
+  template:
+    data:
+    metadata:
+      creationTimestamp:
+      name: backend-conn
+      namespace: hci
+    type: Opaque
