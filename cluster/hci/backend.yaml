@@ -41,7 +41,7 @@ spec:
             - mountPath: /tmp
               name: tmp
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           securityContext:
             readOnlyRootFilesystem: true
             runAsUser: 101
@@ -57,7 +57,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
       name: http
   selector:
