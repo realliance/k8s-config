@@ -2,7 +2,7 @@
 apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
-  name: thirsty-acid-database
+  name: acid-thirsty-database
   namespace: christopherjmiller
 spec:
   databases:
@@ -33,5 +33,5 @@ spec:
       protocol: TCP
       name: psql
   selector:
-    cluster-name: thirsty-acid-database
+    cluster-name: acid-thirsty-database
   type: LoadBalancer
