@@ -33,7 +33,7 @@ spec:
             medium: Memory
       containers:
         - name: scheduler
-          image: ghcr.io/gatorcomputerinteraction/schedule-engine:v0.9.0
+          image: ghcr.io/gatorcomputerinteraction/schedule-engine:v0.10.0
           env:
             - name: BASE_URL
               value: https://api.hci.realliance.net
