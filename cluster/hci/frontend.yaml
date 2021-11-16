@@ -27,12 +27,19 @@ spec:
       securityContext:
         runAsUser: 101
         runAsGroup: 101
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory
       containers:
         - name: frontend
           image: ghcr.io/gatorcomputerinteraction/frontend:v0.2.0
           ports:
             - containerPort: 8080
               protocol: TCP
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp
           securityContext:
             readOnlyRootFilesystem: true
             runAsUser: 101
