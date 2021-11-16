@@ -33,9 +33,20 @@ metadata:
 spec:
   tls:
     - hosts:
+        - hci.realliance.net
         - api.hci.realliance.net
       secretName: hci-tls-tls
   rules:
+    - host: hci.realliance.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
     - host: api.hci.realliance.net
       http:
         paths:
