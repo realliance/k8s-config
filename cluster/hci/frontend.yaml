@@ -31,6 +31,9 @@ spec:
         - name: tmp
           emptyDir:
             medium: Memory
+        - name: cache
+          emptyDir:
+            medium: Memory
       containers:
         - name: frontend
           image: ghcr.io/gatorcomputerinteraction/frontend:v0.5.0
@@ -40,6 +43,8 @@ spec:
           volumeMounts:
             - mountPath: /tmp
               name: tmp
+            - mountPath: /var/cache/nginx
+              name: cache
           securityContext:
             readOnlyRootFilesystem: true
             runAsUser: 101
