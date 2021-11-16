@@ -33,7 +33,7 @@ spec:
             medium: Memory
       containers:
         - name: frontend
-          image: ghcr.io/gatorcomputerinteraction/frontend:v0.2.0
+          image: ghcr.io/gatorcomputerinteraction/frontend:v0.5.0
           ports:
             - containerPort: 8080
               protocol: TCP
