@@ -36,7 +36,7 @@ spec:
             medium: Memory
       containers:
         - name: frontend
-          image: ghcr.io/gatorcomputerinteraction/frontend:v0.8.0
+          image: ghcr.io/gatorcomputerinteraction/frontend:v0.8.0@sha256:c128538bbebdfd5ae28db9fba51cc465bcb9cf56d36bf7feb9ea92b4c3568676
           ports:
             - containerPort: 8080
               protocol: TCP
