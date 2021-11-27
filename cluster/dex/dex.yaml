@@ -113,7 +113,7 @@ spec:
       serviceAccountName: dex
       containers:
         - name: dex
-          image: docker.io/dexidp/dex:v2.30.0@sha256:63fc6ee14bcf1868ebfba90885aec76597e0f27bc8e89d1fd238b1f2ee3dea6e
+          image: docker.io/dexidp/dex:v2.30.2@sha256:27cf2e8644f2ea1ebc6de711b0ace4b5ee2d1f442e148eabbaa8c68308062475
           imagePullPolicy: IfNotPresent
           command: [/usr/local/bin/dex, serve, /etc/dex/config.yaml]
           ports:
