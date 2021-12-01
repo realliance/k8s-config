@@ -33,7 +33,7 @@ spec:
             medium: Memory
       containers:
         - name: backend
-          image: ghcr.io/gatorcomputerinteraction/db-backend:v0.8.0
+          image: ghcr.io/gatorcomputerinteraction/db-backend:v0.8.0@sha256:7e588f32704df628e6c5e60d4ab03e98cbd826296cc4b0b60ea3c9acaedaea50
           envFrom:
             - secretRef:
                 name: backend-conn
