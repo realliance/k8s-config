@@ -29,20 +29,41 @@ spec:
         runAsGroup: 101
       containers:
         - name: home
-          image: quay.io/uface/home:0.7.1@sha256:50c826f9d07e938ff413909de5bb8954536a8a8e09c482c11fc3ced6133571ae
+          image: ghcr.io/uf-ace/ace_website:v0.1.0
           ports:
-            - containerPort: 8080
+            - containerPort: 3000
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 3
-            periodSeconds: 3
-          lifecycle:
-            preStop:
-              exec:
-                command: [/usr/sbin/nginx, -s, quit]
+          env:
+            - name: REACT_APP_ACE_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: ace-home
+                  key: email
+            - name: REACT_APP_ACE_EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ace-home
+                  key: emailPassword
+            - name: REACT_APP_HOME_VIDEO_EMBED_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ace-home
+                  key: videoEmbedId
+            - name: REACT_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ace-home
+                  key: appPassword
+            - name: REACT_APP_URI
+              valueFrom:
+                secretKeyRef:
+                  name: ace-home
+                  key: mongoURI
+            - name: REACT_APP_YOUTUBE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ace-home
+                  key: youtubeAPIKey
 ---
 apiVersion: v1
 kind: Service
@@ -54,7 +75,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 3000
       protocol: TCP
       name: http
   selector:
