@@ -29,7 +29,7 @@ spec:
         runAsGroup: 101
       containers:
         - name: home
-          image: ghcr.io/uf-ace/ace_website:v0.1.0
+          image: ghcr.io/uf-ace/ace_website:v0.1.0@sha256:f278dbe250d47942b7fe69252661c3b620ebc3d762bd6e7906f9d91434da3570
           ports:
             - containerPort: 3000
               protocol: TCP
