@@ -17,7 +17,7 @@ spec:
     - hosts:
         - uf-ace.com
         - www.uf-ace.com
-      secretName: realliance-tls
+      secretName: ace-tls
   rules:
     - host: realliance.net
       http:
