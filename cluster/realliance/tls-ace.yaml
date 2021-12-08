@@ -9,7 +9,7 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
-  commonName: uf-ace.net
+  commonName: uf-ace.com
   dnsNames:
     - uf-ace.com
     - www.uf-ace.com
