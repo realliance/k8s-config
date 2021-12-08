@@ -11,6 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_intercept_errors on;
       error_page 404 /terminated.html;
+      rewrite ^/$ /terminated.html;
 spec:
   tls:
     - hosts:
