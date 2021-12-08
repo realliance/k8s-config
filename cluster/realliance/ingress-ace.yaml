@@ -2,25 +2,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: realliance-ingress
+  name: ace-ingress
   namespace: realliance
   labels:
     service: web
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      if ($host ~* "(www\.)?uf-ace\.com$") {
-        proxy_intercept_errors on;
-        error_page 404 /terminated.html;
-      }
+      proxy_intercept_errors on;
+      error_page 404 /terminated.html;
 spec:
   tls:
     - hosts:
-        - realliance.net
-        - www.realliance.net
-      secretName: realliance-tls
+        - uf-ace.com
+        - www.uf-ace.com
+      secretName: ace-tls
   rules:
-    - host: realliance.net
+    - host: uf-ace.com
       http:
         paths:
           - path: /
@@ -30,7 +28,7 @@ spec:
                 name: home
                 port:
                   number: 80
-    - host: www.realliance.net
+    - host: www.uf-ace.com
       http:
         paths:
           - path: /
