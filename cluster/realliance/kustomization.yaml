@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: realliance
 resources:
   - namespace.yaml
-  - mumble.yaml
   - mumble-tls.yaml
   - home.yaml
   - tls.yaml
