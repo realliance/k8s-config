@@ -8,13 +8,15 @@ metadata:
     service: web
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; navigate-to https:; block-all-mixed-content";
 spec:
   tls:
     - hosts:
         - realliance.net
         - www.realliance.net
+      secretName: realliance-tls
+    - hosts:
+        - uf-ace.com
+        - www.uf-ace.com
       secretName: realliance-tls
   rules:
     - host: realliance.net
@@ -31,6 +33,26 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: home
+                port:
+                  number: 80
+    - host: uf-ace.com
+      http:
+        paths:
+          - path: /terminated.html
+            pathType: Prefix
+            backend:
+              service:
+                name: home
+                port:
+                  number: 80
+    - host: www.uf-ace.com
+      http:
+        paths:
+          - path: /terminated.html
             pathType: Prefix
             backend:
               service:

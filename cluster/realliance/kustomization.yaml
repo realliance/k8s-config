@@ -7,4 +7,5 @@ resources:
   - mumble-tls.yaml
   - home.yaml
   - tls.yaml
+  - tls-ace.yaml
   - ingress.yaml
