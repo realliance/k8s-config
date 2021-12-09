@@ -18,7 +18,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: mumble
-          image: quay.io/realliance/murmur:__
+          image: quay.io/realliance/murmur:__@sha256:b643e5b0cf76455176318bc4ab6c1540ef9b7d8f4b497f1e5e95d959bb7ca567
           ports:
             - containerPort: 64738
           volumeMounts:
