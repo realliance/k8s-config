@@ -1,0 +1,84 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mumble
+spec:
+  selector:
+    matchLabels:
+      app: mumble
+  template:
+    metadata:
+      labels:
+        app: mumble
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: mumble
+          image: quay.io/realliance/murmur:__
+          ports:
+            - containerPort: 64738
+          volumeMounts:
+            - name: tls
+              mountPath: /tls
+              readOnly: true
+            - name: config
+              mountPath: /etc/murmur/murmur.ini
+              subPath: murmur.ini
+              readOnly: true
+      volumes:
+        - name: tls
+          secret:
+            secretName: mumble-tls
+        - name: config
+          configMap:
+            name: mumble-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mumble-config
+data:
+  murmur.ini: |-
+    database=/var/lib/murmur/murmur.sqlite
+    welcometext="<br />Welcome to <b>Realliance Murmur</b>.<br />Enjoy your stay!<br />"
+    sslCert=/tls/tls.crt
+    sslKey=/tls/tls.key
+    suggestVersion=1.3.4
+    logfile=
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mumble-tcp
+  annotations:
+    metallb.universe.tf/allow-shared-ip: mumble
+    external-dns.alpha.kubernetes.io/hostname: mumble.realliance.net
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 104.168.45.231
+  selector:
+    app: mumble
+  ports:
+    - protocol: TCP
+      port: 64738
+      targetPort: 64738
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mumble-udp
+  annotations:
+    metallb.universe.tf/allow-shared-ip: mumble
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 104.168.45.231
+  selector:
+    app: mumble
+  ports:
+    - protocol: UDP
+      port: 64738
+      targetPort: 64738
