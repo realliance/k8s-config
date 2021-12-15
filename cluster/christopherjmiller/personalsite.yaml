@@ -34,6 +34,9 @@ spec:
         - name: cache
           emptyDir:
             medium: Memory
+        - name: pid
+          emptyDir:
+            medium: Memory
       containers:
         - name: mysite
           image: ghcr.io/christopherjmiller/chrismiller.xyz:0.0.9@sha256:47b719958b9c2fd9a181b7b5350b0bb9d26c05a9bf4c11af3ed0196fd92792c7
@@ -55,6 +58,8 @@ spec:
               name: tmp
             - mountPath: /var/cache/nginx
               name: cache
+            - mountPath: /var/run/
+              name: pid
           securityContext:
             readOnlyRootFilesystem: true
             runAsUser: 101
